@@ -1,4 +1,65 @@
-.App {
+#activity-table  {
+  width: auto;
+  margin-right: 0px;
+  margin-left: auto;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  grid-template-rows: 10% 10% 10%;
+  /* background-color: #2196F3; */
+  padding: 10px;
+
+}
+.grid-item {
+  /* max-width: 100%;  */
+  /* background-color: rgba(255, 255, 255, 0.8); */
+  /* border: 1px solid rgba(0, 0, 0, 0.8); */
+  /* padding: 20px; */
+  font-size: 30px;
+  text-align: center;
+
+}
+.grid-profile {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  /* grid-template-rows: 10% 10% 10%; */
+  /* background-color: #2196F3; */
+  padding: 10px;
+
+}
+.grid-item-prof {
+  /* background-color: rgba(255, 255, 255, 0.8); */
+  /* border: 1px solid rgba(0, 0, 0, 0.8); */
+  font-size: 20px;
+}
+
+.icon, #runescore, #total-xp {
+  display: inline-block;
+}
+
+#loading {
+  visibility: hidden; 
+  position: absolute;
+}
+
+#profile-info {
+  visibility: hidden;
+}
+
+#activity-table {
+  /* display: none; */
+}
+
+#topnav {
+  padding-right: 5%;
+}
+
+#logo {
+  max-height:70px;
+}
+/* .App {
   text-align: center;
 }
 
@@ -30,4 +91,6 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
+
+
