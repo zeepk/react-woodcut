@@ -112,62 +112,62 @@
 // }
 
 
-// function loadData(res, player_name) {
-//     console.log("running data for " + player_name)
-//     var skills = {}
-//     var minigames = {}
-//     var temp_data_array = res.split("\n")
-//     for (var i = 0; i < 28; i++) {
-//         var individual_skill_array = temp_data_array[i].split(",")
-//         var xp = individual_skill_array[2]
-//         xp = parseInt(xp, 10)
-//         skills[i] = {
-//             id: i,
-//             name: data_array[i][1],
-//             rank: individual_skill_array[0],
-//             level: individual_skill_array[1],
-//             xp: xp.toLocaleString('en')
-//         }
+function loadData(res, player_name) {
+    console.log("running data for " + player_name)
+    var skills = {}
+    var minigames = {}
+    var temp_data_array = res.split("\n")
+    for (var i = 0; i < 28; i++) {
+        var individual_skill_array = temp_data_array[i].split(",")
+        var xp = individual_skill_array[2]
+        xp = parseInt(xp, 10)
+        skills[i] = {
+            id: i,
+            name: data_array[i][1],
+            rank: individual_skill_array[0],
+            level: individual_skill_array[1],
+            xp: xp.toLocaleString('en')
+        }
 
-//     }
-//     for (i = 28; i < 57; i++) {
-//         var individual_minigame_array = temp_data_array[i].split(",")
-//         var score = individual_minigame_array[1]
-//         score = parseInt(score, 10)
-//         minigames[i] = {
-//             id: i,
-//             name: data_array[i][1],
-//             rank: individual_minigame_array[0],
-//             score: score.toLocaleString('en')
-//         }
+    }
+    for (i = 28; i < 57; i++) {
+        var individual_minigame_array = temp_data_array[i].split(",")
+        var score = individual_minigame_array[1]
+        score = parseInt(score, 10)
+        minigames[i] = {
+            id: i,
+            name: data_array[i][1],
+            rank: individual_minigame_array[0],
+            score: score.toLocaleString('en')
+        }
 
-//     }
-//     for (i = 0; i < 28; i++) {
-//         document.getElementById(i + 'name').innerHTML = skills[i].name
-//         document.getElementById(i + 'level').innerHTML = skills[i].level
-//         document.getElementById(i + 'rank').innerHTML = skills[i].rank
-//         document.getElementById(i + 'xp').innerHTML = skills[i].xp
+    }
+    for (i = 0; i < 28; i++) {
+        document.getElementById(i + 'name').innerHTML = skills[i].name
+        document.getElementById(i + 'level').innerHTML = skills[i].level
+        document.getElementById(i + 'rank').innerHTML = skills[i].rank
+        document.getElementById(i + 'xp').innerHTML = skills[i].xp
 
-//     }
-
-
-//     // document.getElementById("static-info").style.visibility = "visible";
-//     document.getElementById("username").innerHTML = player_name.replace('_', ' ')
-//     document.getElementById("avatar").src = "http://secure.runescape.com/m=avatar-rs/" + player_name + "/chat.png"
-//     document.getElementById("runescore").innerHTML = minigames[52].score
-//     document.getElementById("runescore-rank").innerHTML = minigames[52].rank
-//     document.getElementById("total-xp").innerHTML = skills[0].xp
-//     document.getElementById("total-xp-rank").innerHTML = skills[0].rank
-//     var profile_info = document.getElementById("profile-info")
-//     profile_info.style.visibility = "visible"
+    }
 
 
-//     var stat_table = document.getElementById("stat-table")
-//     stat_table.style.display = "block"
+    // document.getElementById("static-info").style.visibility = "visible";
+    document.getElementById("username").innerHTML = player_name.replace('_', ' ')
+    document.getElementById("avatar").src = "http://secure.runescape.com/m=avatar-rs/" + player_name + "/chat.png"
+    document.getElementById("runescore").innerHTML = minigames[52].score
+    document.getElementById("runescore-rank").innerHTML = minigames[52].rank
+    document.getElementById("total-xp").innerHTML = skills[0].xp
+    document.getElementById("total-xp-rank").innerHTML = skills[0].rank
+    var profile_info = document.getElementById("profile-info")
+    profile_info.style.visibility = "visible"
 
-//     document.getElementById("loading").style.visibility = "hidden";
 
-// }
+    var stat_table = document.getElementById("stat-table")
+    stat_table.style.display = "block"
+
+    document.getElementById("loading").style.visibility = "hidden";
+
+}
 
 
 // function loadActivities (res_dict){

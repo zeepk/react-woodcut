@@ -1,4 +1,4 @@
-#activity-table  {
+#activity-table {
   width: auto;
   margin-right: 0px;
   margin-left: auto;
@@ -10,7 +10,6 @@
   grid-template-rows: 10% 10% 10%;
   /* background-color: #2196F3; */
   padding: 10px;
-
 }
 .grid-item {
   /* max-width: 100%;  */
@@ -19,7 +18,6 @@
   /* padding: 20px; */
   font-size: 30px;
   text-align: center;
-
 }
 .grid-profile {
   display: grid;
@@ -27,7 +25,6 @@
   /* grid-template-rows: 10% 10% 10%; */
   /* background-color: #2196F3; */
   padding: 10px;
-
 }
 .grid-item-prof {
   /* background-color: rgba(255, 255, 255, 0.8); */
@@ -35,12 +32,14 @@
   font-size: 20px;
 }
 
-.icon, #runescore, #total-xp {
+.icon,
+#runescore,
+#total-xp {
   display: inline-block;
 }
 
 #loading {
-  visibility: hidden; 
+  visibility: hidden;
   position: absolute;
 }
 
@@ -57,7 +56,7 @@
 }
 
 #logo {
-  max-height:70px;
+  max-height: 70px;
 }
 /* .App {
   text-align: center;
@@ -92,5 +91,3 @@
     transform: rotate(360deg);
   }
 } */
-
-
