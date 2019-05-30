@@ -2,7 +2,7 @@ import React from "react";
 
 import "./App.css";
 import Load_data from "./load_data";
-
+import Fetching from "./fetching";
 export default function App() {
   return (
     <div className="App">
@@ -48,7 +48,7 @@ export default function App() {
 
       <div className="grid-container">
         <div className="grid-item">
-        <Load_data />
+        <Fetching />
         </div>
         <div className="grid-item">
           <img src="loading.gif" id="loading" alt="loading" />
