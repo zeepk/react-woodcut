@@ -63,47 +63,46 @@ export default function load_data() {
     [55, 'Hard Clues'],
     [56, 'Elite Clues'],
     [57, 'Master Clues'],
-];
+  ];
   var player_name = "zee_pk";
 
-  console.log(player_name);
+  // console.log(player_name);
+  this.state = {
+    hits: [],
+  };
 
-  async function getUsers() {
-    const proxyurl = "https://cors-anywhere.herokuapp.com/";
-    const response = await fetch(
-      proxyurl +
-        "https://secure.runescape.com/m=hiscore/index_lite.ws?player=" +
-        player_name
-    );
-    const users = await response.text();
-    console.log("I ran");
-    return users;
-    //TODO: do the whole thing in here
-  }
-  async function sayhello(info_string) {
+  const proxyurl = "https://cors-anywhere.herokuapp.com/";
 
-    console.log("saying hello");
-    console.log(info_string);
-  }
-  var information_string = getUsers();
-  
+
+
+    fetch(proxyurl + "https://secure.runescape.com/m=hiscore/index_lite.ws?player=" + player_name)
+      .then(response => response.json())
+      .then(data => this.setState({ hits: data.hits }));
+
+
+
+
+
   //loading in the data to arrays
-//   console.log("running data for " + player_name)
-//     var skills = {}
-//     var minigames = {}
-//     var temp_data_array = res.split("\n")
-//     for (var i = 0; i < 28; i++) {
-//         var individual_skill_array = temp_data_array[i].split(",")
-//         var xp = individual_skill_array[2]
-//         xp = parseInt(xp, 10)
-//         skills[i] = {
-//             id: i,
-//             name: data_array[i][1],
-//             rank: individual_skill_array[0],
-//             level: individual_skill_array[1],
-//             xp: xp.toLocaleString('en')
-//         }//end skills[i]
-//     }//end for
+  // console.log("running data for " + player_name)
+  //   var skills = {}
+  //   var minigames = {}
+  //   var temp_data_array = res.split("\n")
+  //   for (var i = 0; i < 28; i++) {
+  //       var individual_skill_array = temp_data_array[i].split(",")
+  //       var xp = individual_skill_array[2]
+  //       xp = parseInt(xp, 10)
+  //       skills[i] = {
+  //           id: i,
+  //           name: data_array[i][1],
+  //           rank: individual_skill_array[0],
+  //           level: individual_skill_array[1],
+  //           xp: xp.toLocaleString('en')
+  //       }//end skills[i]
+  //   }//end for
+
+
+
 
   return (
     <div>
