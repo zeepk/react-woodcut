@@ -1,19 +1,17 @@
 import React from "react";
-
+import SearchField from "react-search-field";
 import "./App.css";
-import Load_data from "./load_data";
-import Fetching from "./fetching";
+import Load_data from "./components/load_data";
+import Fetch_stats from "./components/fetch_stats";
 export default function App() {
   return (
     <div className="App">
       <link
-        rel="stylesheet"
-        href="https://bootswatch.com/4/darkly/bootstrap.min.css"
-      />
+        rel="stylesheet" href="https://bootswatch.com/4/darkly/bootstrap.min.css"/>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" />
       <nav id="topnav" className="navbar navbar-expand-lg navbar-dark bg-green">
-        <a className="navbar-brand" href="">
-          <img id="logo" src="woodcutLogo.png" alt="" />
+        <a className="navbar-brand" href=" ">
+        <img id="logo" src={require('./woodcutLogo.png')} alt="Site Logo" />
         </a>
         <button
           className="navbar-toggler"
@@ -35,23 +33,26 @@ export default function App() {
               </a>
             </li>
           </ul>
-          {/* <form className="form-inline my-2 my-lg-0" onsubmit="return false;">  
-      <input id="searchbox" className="form-control mr-sm-2" type="text" placeholder="Search" value="">
+
+
+      <input id="searchbox" className="form-control mr-sm-2" type="text" placeholder="Search" value="" />
       <input id="submitbutton" type="button" className="btn btn-secondary my-2 my-sm-0" onclick="populate()" value="Search"></input> 
-    </form> */}
+
         </div>
       </nav>
-
-
 
       {/* <!-- GRID --> */}
 
       <div className="grid-container">
-        <div className="grid-item">
-        <Fetching />
+        {/* stat table */}
+
+        <div className="grid-item" id="stat-table">
+          <Fetch_stats username="zee pk"/>
         </div>
-        <div className="grid-item">
-          <img src="loading.gif" id="loading" alt="loading" />
+
+        {/* player info */}
+        <div className="grid-item" id="player-info">
+          
 
           <div>
             <img id="avatar" src="" alt="avatar" />
@@ -59,12 +60,13 @@ export default function App() {
           <div>
             <h1 id="username"> </h1>
           </div>
+          {/* player grid */}
           <div id="profile-info" className="grid-profile">
             <div className="grid-item-prof">
               <p>RuneScore:</p>
             </div>
             <div className="grid-item-prof">
-              {" "}
+              
               <img src="RuneScore.png" alt="" /> <p id="runescore" />
             </div>
             <div className="grid-item-prof">
@@ -78,7 +80,7 @@ export default function App() {
               <p>Total XP:</p>
             </div>
             <div className="grid-item-prof">
-              {" "}
+              
               <img src="skillsIcon.png" alt="" /> <p id="total-xp" />
             </div>
             <div className="grid-item-prof">
@@ -89,7 +91,7 @@ export default function App() {
             </div>
           </div>
         </div>
-
+        {/* activity table */}
         <div className="grid-item">
           <table id="activity-table" className="table" align="right">
             <thead className="table-primary">
