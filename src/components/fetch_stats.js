@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Table } from 'react-bootstrap';
+
 export default class fetch_stats extends Component {
   constructor(props) {
     super(props);
@@ -7,14 +8,24 @@ export default class fetch_stats extends Component {
       error: null,
       isLoaded: false,
       items: " "
+      
     };
   }
 
+
   componentDidMount(props) {
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
-    var player_name = this.props.username;
+    var player_name = " "
+    if (!this.props.username){
+      player_name = "zee pk"
+    }
+    else{
+      player_name = this.props.username.toString();  
+    }
+    player_name = player_name.toString();
     player_name = player_name.replace(' ', '+');
     player_name = player_name.replace('_', '+');
+    alert("The name: " + player_name);
     fetch(
       proxyurl +
         "https://secure.runescape.com/m=hiscore/index_lite.ws?player=" +
@@ -106,7 +117,9 @@ export default class fetch_stats extends Component {
     function organize_data(dict, data_array) {
       var skills = {};
       var minigames = {};
+      console.log(dict)
       var temp_data_array = dict.split("\n");
+
       for (var i = 0; i < 28; i++) {
         var individual_skill_array = temp_data_array[i].split(",");
         var xp = individual_skill_array[2];

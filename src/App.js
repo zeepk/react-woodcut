@@ -2,16 +2,19 @@ import React from "react";
 import SearchField from "react-search-field";
 import "./App.css";
 import Load_data from "./components/load_data";
+import NameForm from "./components/NameForm";
 import Fetch_stats from "./components/fetch_stats";
 export default function App() {
   return (
     <div className="App">
       <link
-        rel="stylesheet" href="https://bootswatch.com/4/darkly/bootstrap.min.css"/>
+        rel="stylesheet"
+        href="https://bootswatch.com/4/darkly/bootstrap.min.css"
+      />
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" />
       <nav id="topnav" className="navbar navbar-expand-lg navbar-dark bg-green">
         <a className="navbar-brand" href=" ">
-        <img id="logo" src={require('./woodcutLogo.png')} alt="Site Logo" />
+          <img id="logo" src={require("./woodcutLogo.png")} alt="Site Logo" />
         </a>
         <button
           className="navbar-toggler"
@@ -34,10 +37,21 @@ export default function App() {
             </li>
           </ul>
 
-
-      <input id="searchbox" className="form-control mr-sm-2" type="text" placeholder="Search" value="" />
-      <input id="submitbutton" type="button" className="btn btn-secondary my-2 my-sm-0" onclick="populate()" value="Search"></input> 
-
+          {/* <input
+            id="searchbox"
+            className="form-control mr-sm-2"
+            type="text"
+            placeholder="Search"
+            value=""
+          />
+          <input
+            id="submitbutton"
+            type="button"
+            className="btn btn-secondary my-2 my-sm-0"
+            onclick="populate()"
+            value="Search"
+          /> */}
+          <NameForm />
         </div>
       </nav>
 
@@ -47,13 +61,14 @@ export default function App() {
         {/* stat table */}
 
         <div className="grid-item" id="stat-table">
-          <Fetch_stats username="zee pk"/>
+          <script>
+          var an_object = this.refs.username_input;
+          </script>
+          <Fetch_stats id="stat-fetching" username="zee_pk"/>
         </div>
 
         {/* player info */}
         <div className="grid-item" id="player-info">
-          
-
           <div>
             <img id="avatar" src="" alt="avatar" />
           </div>
@@ -66,7 +81,6 @@ export default function App() {
               <p>RuneScore:</p>
             </div>
             <div className="grid-item-prof">
-              
               <img src="RuneScore.png" alt="" /> <p id="runescore" />
             </div>
             <div className="grid-item-prof">
@@ -80,7 +94,6 @@ export default function App() {
               <p>Total XP:</p>
             </div>
             <div className="grid-item-prof">
-              
               <img src="skillsIcon.png" alt="" /> <p id="total-xp" />
             </div>
             <div className="grid-item-prof">
