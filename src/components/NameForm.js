@@ -1,30 +1,30 @@
 import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
-import Fetch_stats from "./fetch_stats";
+import PropTypes from 'prop-types';
+
 export default class NameForm extends Component {
     constructor(props) {
-      super(props);
-      this.state = {value: ''};
-  
-      this.handleChange = this.handleChange.bind(this);
-      this.handleSubmit = this.handleSubmit.bind(this);
-    }
-  
-    handleChange(event) {
-      this.setState({value: event.target.value});
-    }
-  
+        super(props);
+        this.state = {value: ' '};
+    
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+      }
 
-    handleSubmit(event) {
+
+      handleChange(event) {
+        this.setState({value: event.target.value});
+      }
+   
+
+    handleSubmit() {
       alert('A name was submitted: ' + this.state.value);
-        // alert(this.state.value);
-        // Fetch_stats.setState({name: this.state.value});
-        ReactDOM.render(
-            <Fetch_stats
-                username = { this.state.value }
-            />, document.getElementById("stat-fetching")
-          ); 
-      event.preventDefault();
+        this.props.changeName(this.state.value);
+        // var lang = this.state.value;
+        // lang = lang.toString();
+        // alert("Calling back: " + lang)
+        // this.changeHandler(lang);
+        
+    //   event.preventDefault();
     }
     render() {
       return (
@@ -33,7 +33,7 @@ export default class NameForm extends Component {
         <form onSubmit={this.handleSubmit}>
           <label>
             Name:
-            <input type="text" value={this.state.value} onChange={this.handleChange} />
+            <input type="text" value={this.props.value} onChange={this.handleChange} />
           </label>
           <input type="submit" value="Submit" />
         </form>

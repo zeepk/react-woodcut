@@ -2,30 +2,34 @@ import React, { Component } from "react";
 import { Table } from 'react-bootstrap';
 
 export default class fetch_stats extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      error: null,
-      isLoaded: false,
-      items: " "
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     error: null,
+  //     isLoaded: false,
+  //     items: " "
       
-    };
+  //   };
+  // }
+
+  state = {
+          error: null,
+      isLoaded: false,
+      items: " "  
   }
+
 
 
   componentDidMount(props) {
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
     var player_name = " "
-    if (!this.props.username){
-      player_name = "zee pk"
-    }
-    else{
+      alert("Prop received: " + this.props.username)
       player_name = this.props.username.toString();  
-    }
+    
     player_name = player_name.toString();
     player_name = player_name.replace(' ', '+');
     player_name = player_name.replace('_', '+');
-    alert("The name: " + player_name);
+    // alert("The name: " + player_name);
     fetch(
       proxyurl +
         "https://secure.runescape.com/m=hiscore/index_lite.ws?player=" +

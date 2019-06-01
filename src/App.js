@@ -3,8 +3,11 @@ import SearchField from "react-search-field";
 import "./App.css";
 import Load_data from "./components/load_data";
 import NameForm from "./components/NameForm";
+import Parent_fetcher from "./components/parent_fetcher";
+// import {Parent, Child} from "./components/testing";
 import Fetch_stats from "./components/fetch_stats";
 export default function App() {
+
   return (
     <div className="App">
       <link
@@ -51,20 +54,20 @@ export default function App() {
             onclick="populate()"
             value="Search"
           /> */}
-          <NameForm />
+          
+          {/* <NameForm /> */}
         </div>
       </nav>
 
       {/* <!-- GRID --> */}
-
+          
       <div className="grid-container">
         {/* stat table */}
 
         <div className="grid-item" id="stat-table">
-          <script>
-          var an_object = this.refs.username_input;
-          </script>
-          <Fetch_stats id="stat-fetching" username="zee_pk"/>
+          {/* <Fetch_stats /> */}
+          <Parent_fetcher />
+          {/* <Fetch_stats id="stat-fetching" username="zee_pk"/> */}
         </div>
 
         {/* player info */}
