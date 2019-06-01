@@ -4,7 +4,7 @@ import NameForm from "./NameForm";
 export default class parent_fetcher extends Component {
     constructor(props){
         super(props);
-    this.state = { user: ' ' }
+    this.state = { user: 'zee pk' }
     }
 
     // handleLanguage = (userValue) => {
@@ -28,8 +28,9 @@ export default class parent_fetcher extends Component {
         return (
             <div>
                 <NameForm user={this.state.user} changeName={(user) => this.setState({user})}/>
-                <h1>{this.state.user}</h1>
-                <FetchStats username={this.state.user}/> 
+
+                {/* <h1>{this.state.user}</h1> */}
+                <FetchStats user={this.state.user}/> 
             </div>
         )
     }

@@ -18,13 +18,25 @@ export default class fetch_stats extends Component {
       items: " "  
   }
 
+ 
 
+  componentDidMount() {
+    alert("mount called");
+    this.fetch_api();
+  }
 
-  componentDidMount(props) {
+  componentDidUpdate(prevProps) {
+    alert("update called");
+    if (prevProps.user !== this.props.user) {
+      this.fetch_api();
+    }
+  }
+
+  fetch_api() {
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
     var player_name = " "
-      alert("Prop received: " + this.props.username)
-      player_name = this.props.username.toString();  
+      // alert("Prop received: " + this.props.user)
+      player_name = this.props.user.toString();  
     
     player_name = player_name.toString();
     player_name = player_name.replace(' ', '+');
