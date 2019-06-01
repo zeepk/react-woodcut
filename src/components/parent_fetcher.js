@@ -16,6 +16,7 @@ export default class parent_fetcher extends Component {
                 <NameForm user={this.state.user} changeName={(user) => this.setState({user})}/>
 
                 <h1>{this.state.user}</h1>
+                
                 <FetchStats user={this.state.user}/> 
             </div>
         )
