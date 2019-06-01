@@ -4,24 +4,10 @@ import NameForm from "./NameForm";
 export default class parent_fetcher extends Component {
     constructor(props){
         super(props);
-    this.state = { user: 'zee pk' }
+    this.state = { user: 'zee pk' };
+    this.render = this.render.bind(this);
     }
 
-    // handleLanguage = (userValue) => {
-    //     this.setState({user: userValue});
-    //     alert("Parent fether received: " + userValue)
-    //     // return this.state.user;
-    // }
-    // changeHandler = (dataFromChild) => {
-    //     alert("Parent received: " + dataFromChild)
-    //     // var a_name = dataFromChild;
-    //     if (dataFromChild){
-    //         this.setState({user: dataFromChild}) 
-    //     }
-    //     else{
-    //         this.setState({user: "zee pk"}) 
-    //     }
-    // }
 
 
     render() {
@@ -29,7 +15,7 @@ export default class parent_fetcher extends Component {
             <div>
                 <NameForm user={this.state.user} changeName={(user) => this.setState({user})}/>
 
-                {/* <h1>{this.state.user}</h1> */}
+                <h1>{this.state.user}</h1>
                 <FetchStats user={this.state.user}/> 
             </div>
         )

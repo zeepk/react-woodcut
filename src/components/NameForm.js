@@ -8,34 +8,40 @@ export default class NameForm extends Component {
     
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.render = this.render.bind(this);
       }
 
 
       handleChange(event) {
+        console.log("key press");
         this.setState({value: event.target.value});
+        event.preventDefault();
       }
    
 
-    handleSubmit() {
-      alert('A name was submitted: ' + this.state.value);
-        this.props.changeName(this.state.value);
+    handleSubmit(e) {
+      //  event.preventDefault();
+        let new_name = this.state.value;
+        console.log(new_name)
+        this.props.changeName(new_name);
         // var lang = this.state.value;
         // lang = lang.toString();
         // alert("Calling back: " + lang)
         // this.changeHandler(lang);
         
-    //   event.preventDefault();
+        e.stopPropagation();
+        e.nativeEvent.stopImmediatePropagation();
     }
     render() {
       return (
         <React.Fragment>
         {/* <Fetch_stats username={this.state.value} /> */}
-        <form onSubmit={this.handleSubmit}>
+        <form>
           <label>
             Name:
-            <input type="text" value={this.props.value} onChange={this.handleChange} />
+            <input type="text" value={this.props.value} onChange={this.handleChange}  onSubmit={this.handleSubmit}/>
           </label>
-          <input type="submit" value="Submit" />
+          {/* <button type="submit" value="Submit" /> */}
         </form>
       </React.Fragment>
       );

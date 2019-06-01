@@ -2,37 +2,36 @@ import React, { Component } from "react";
 import { Table } from 'react-bootstrap';
 
 export default class fetch_stats extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     error: null,
-  //     isLoaded: false,
-  //     items: " "
-      
-  //   };
-  // }
-
-  state = {
-          error: null,
+  constructor(props) {
+    super(props);
+    this.state = {
+      error: null,
       isLoaded: false,
-      items: " "  
+      items: " "
+
+    };
+    this.componentDidMount = this.componentDidMount.bind(this);
+    this.componentDidUpdate = this.componentDidUpdate.bind(this);
+    this.componentWillUnmount = this.componentWillUnmount.bind(this);
   }
 
+  // state = {
+  //         error: null,
+  //     isLoaded: false,
+  //     items: " "  
+  // }
+//   shouldComponentUpdate() {
+    
+//     return false; // Will cause component to never re-render.
+// }
  
 
   componentDidMount() {
-    alert("mount called");
-    this.fetch_api();
-  }
-
-  componentDidUpdate(prevProps) {
-    alert("update called");
-    if (prevProps.user !== this.props.user) {
-      this.fetch_api();
-    }
-  }
-
-  fetch_api() {
+    this._isMounted = true;
+    console.log("mount called");
+    
+    // alert("running fetch");
+    console.log("running fetch");
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
     var player_name = " "
       // alert("Prop received: " + this.props.user)
@@ -50,26 +49,95 @@ export default class fetch_stats extends Component {
       .then(res => res.text())
       .then(
         result => {
+          // alert("RESULT changing state");
+            if(this._isMounted){
+          console.log("RESULT changing state");
           this.setState({
             isLoaded: true,
             items: result
           });
+        }
         },
         // Note: it's important to handle errors here
         // instead of a catch() block so that we don't swallow
         // exceptions from actual bugs in components.
         error => {
+          if(this._isMounted){
+          // alert("ERROR changing state");
+          console.log("ERROR changing state");
           this.setState({
             isLoaded: true,
             error
           });
         }
+        }
+      
       );
+      
     const { error, isLoaded, items } = this.state;
-    console.log(items);
+    // console.log(items);
   }
 
+  componentDidUpdate(prevProps) {
+    console.log("update called");
+    if (prevProps.user !== this.props.user) {
+      // alert("running fetch");
+    console.log("running fetch");
+    const proxyurl = "https://cors-anywhere.herokuapp.com/";
+    var player_name = " "
+      // alert("Prop received: " + this.props.user)
+      player_name = this.props.user.toString();  
+    
+    player_name = player_name.toString();
+    player_name = player_name.replace(' ', '+');
+    player_name = player_name.replace('_', '+');
+    // alert("The name: " + player_name);
+    fetch(
+      (proxyurl +
+        "https://secure.runescape.com/m=hiscore/index_lite.ws?player=" +
+        player_name)
+    )
+      .then(res => res.text())
+      .then(
+        result => {
+          // alert("RESULT changing state");
+            if(this._isMounted){
+          console.log("RESULT changing state");
+          this.setState({
+            isLoaded: true,
+            items: result
+          });
+        }
+        },
+        // Note: it's important to handle errors here
+        // instead of a catch() block so that we don't swallow
+        // exceptions from actual bugs in components.
+        error => {
+          if(this._isMounted){
+          // alert("ERROR changing state");
+          console.log("ERROR changing state");
+          this.setState({
+            isLoaded: true,
+            error
+          });
+        }
+        }
+      
+      );
+    const { error, isLoaded, items } = this.state;
+    // console.log(items);
+    }
+    // alert("done updating");
+  }
+  componentWillUnmount() {
+    console.log("unmounted")
+    this._isMounted = false;
+  }
+
+  
+
   render() {
+    
     var data_array = [
         [0, 'Overall'],
         [1, 'Attack'],
@@ -133,7 +201,7 @@ export default class fetch_stats extends Component {
     function organize_data(dict, data_array) {
       var skills = {};
       var minigames = {};
-      console.log(dict)
+      // console.log(dict)
       var temp_data_array = dict.split("\n");
 
       for (var i = 0; i < 28; i++) {
@@ -147,7 +215,7 @@ export default class fetch_stats extends Component {
           level: individual_skill_array[1],
           xp: xp.toLocaleString("en")
         };
-        console.log(temp_data_array[1])
+        // console.log(temp_data_array[1])
       }
       return skills;
     }
@@ -156,7 +224,8 @@ export default class fetch_stats extends Component {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
       return <div>Loading...</div>;
-    } else {
+    } else 
+    {
       var new_array = organize_data(items, data_array)
       return (<div>
         <Table id="stat-table">
