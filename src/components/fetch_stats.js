@@ -80,6 +80,7 @@ export default class fetch_stats extends Component {
 
   componentDidUpdate(prevProps) {
     console.log("update called");
+    
     if (prevProps.user !== this.props.user) {
       // alert("running fetch");
     console.log("running fetch");
@@ -100,34 +101,32 @@ export default class fetch_stats extends Component {
       .then(res => res.text())
       .then(
         result => {
-          // alert("RESULT changing state");
-            if(this._isMounted){
+
           console.log("RESULT changing state");
           this.setState({
             isLoaded: true,
             items: result
           });
-        }
+
         },
         // Note: it's important to handle errors here
         // instead of a catch() block so that we don't swallow
         // exceptions from actual bugs in components.
         error => {
-          if(this._isMounted){
-          // alert("ERROR changing state");
+
           console.log("ERROR changing state");
           this.setState({
             isLoaded: true,
             error
           });
-        }
+
         }
       
       );
     const { error, isLoaded, items } = this.state;
-    // console.log(items);
+
     }
-    // alert("done updating");
+
   }
   componentWillUnmount() {
     console.log("unmounted")
