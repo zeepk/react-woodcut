@@ -196,7 +196,7 @@ export default class fetch_activity_log extends Component {
     function get_dates(dict) {
         var dates = {};
         try {
-            var act_text = dict['activities'][0]['text']
+            var act_text = dict['activities'][11]['text']
         }
         catch(error) {
             
@@ -204,6 +204,7 @@ export default class fetch_activity_log extends Component {
             for (var i=0; i<20; i++){
                 empty_activities[i] = " ";
             }
+            
             return empty_activities;
         }
         for (var j = 0; j < 20; j++) {
@@ -215,7 +216,7 @@ export default class fetch_activity_log extends Component {
     function organize_data(dict) {
         var activities = {};
         try {
-            var act_text = dict['activities'][0]['text']
+            var act_text = dict['activities'][11]['text']
         }
         catch(error) {
             // alert("Player's profile may be set to Private.\nActivity data may be empty.")
@@ -223,6 +224,7 @@ export default class fetch_activity_log extends Component {
             for (var i=0; i<20; i++){
                 empty_activities[i] = " ";
             }
+            
             return empty_activities;
         }
 

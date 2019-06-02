@@ -139,6 +139,19 @@ export default class fetch_user_data extends Component {
 
 
         function organize_data(dict) {
+            try {
+                var temp_data_array = dict.split("\n");
+                var individual_skill_array = temp_data_array[5].split(",");
+              }
+              catch (error) {
+        
+                var empty_activities = {}
+                for (var i = 0; i < 28; i++) {
+                  empty_activities[i] = " ";
+                }
+                console.log("empty stats");
+                return empty_activities;
+              }
             var data = {};
             //   var minigames = {};
             // console.log(dict)
