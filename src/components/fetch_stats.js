@@ -222,7 +222,7 @@ export default class fetch_stats extends Component {
     if (error) {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
-      return <div>Loading...</div>;
+      return <div><img src={require("./loading.gif")} alt="loading screen"/></div>;
     } else 
     {
       var new_array = organize_data(items, data_array)
