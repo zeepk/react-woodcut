@@ -2,13 +2,26 @@ import React, { Component } from 'react'
 import FetchStats from "./fetch_stats";
 import NameForm from "./NameForm";
 import FetchAvatar from "./fetch_avatar";
+import Img from 'react-image';
 export default class parent_fetcher extends Component {
     constructor(props) {
         super(props);
         this.state = { user: 'zee pk' };
         this.render = this.render.bind(this);
+        this.username = this.state.user.replace(' ', '+');
     }
 
+    nameWithPluses() {
+        var username = this.state.user.replace(' ', '+');
+        username = username.replace('_', '+');
+        return username;  
+    }
+
+    nameWithSpaces() {
+        var username = this.state.user.replace('+', ' ');
+        username = username.replace('_', ' ');
+        return username;  
+    }
 
 
     render() {
@@ -62,10 +75,16 @@ export default class parent_fetcher extends Component {
                     {/* player info */}
                     <div className="grid-item" id="player-info">
                         <div>
-                            <FetchAvatar user={this.state.user} />
+                            {
+                                
+
+                            }
+                            {/* <FetchAvatar user={this.state.user} /> */}
+                            {/* <img id="logo" src={require("https://cors-anywhere.herokuapp.com/http://secure.runescape.com/m=avatar-rs/zee+pk/chat.png")} alt="Site Logo" /> */}
+                            <Img src={"https://cors-anywhere.herokuapp.com/http://secure.runescape.com/m=avatar-rs/" + this.nameWithPluses() + "/chat.png"} />
                         </div>
                         <div>
-                            <h1 id="username">{this.state.user}</h1>
+                            <h1 id="username">{this.nameWithSpaces()}</h1>
                         </div>
                         {/* player grid */}
                         <div id="profile-info" className="grid-profile">

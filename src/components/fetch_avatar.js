@@ -7,7 +7,7 @@ export default class fetch_avatar extends Component {
     this.state = {
       error: null,
       isLoaded: false,
-      items: " "
+      items: null
 
     };
     this.componentDidMount = this.componentDidMount.bind(this);
@@ -144,7 +144,7 @@ export default class fetch_avatar extends Component {
     {
 
       return (<div>
-        <img src={items}></img>
+        <img src=""></img>
       </div>);
     }
   }
