@@ -2,6 +2,7 @@
   width: auto;
   margin-right: 0px;
   margin-left: auto;
+  text-align: left;
 }
 
 .grid-container {
@@ -31,6 +32,10 @@
   /* border: 1px solid rgba(0, 0, 0, 0.8); */
   font-size: 20px;
 }
+#smaller {
+  padding-bottom: 20px;
+}
+
 
 .icon,
 #runescore,
@@ -44,7 +49,7 @@
 }
 
 #profile-info {
-  visibility: hidden;
+  /* visibility: hidden; */
 }
 
 #stat-table {

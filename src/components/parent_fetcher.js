@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import FetchStats from "./fetch_stats";
+import FetchActivityLog from "./fetch_activity_log";
+import FetchUserData from "./fetch_user_data";
 import NameForm from "./NameForm";
-import FetchAvatar from "./fetch_avatar";
 import Img from 'react-image';
 export default class parent_fetcher extends Component {
     constructor(props) {
@@ -14,13 +15,13 @@ export default class parent_fetcher extends Component {
     nameWithPluses() {
         var username = this.state.user.replace(' ', '+');
         username = username.replace('_', '+');
-        return username;  
+        return username;
     }
 
     nameWithSpaces() {
         var username = this.state.user.replace('+', ' ');
         username = username.replace('_', ' ');
-        return username;  
+        return username;
     }
 
 
@@ -66,7 +67,7 @@ export default class parent_fetcher extends Component {
 
                     <div className="grid-item" id="stat-table">
 
-                        {/* stat table goes here */}
+                        {/* stat table component goes here */}
                         <FetchStats user={this.state.user} />
 
                     </div>
@@ -75,56 +76,31 @@ export default class parent_fetcher extends Component {
                     {/* player info */}
                     <div className="grid-item" id="player-info">
                         <div>
-                            {
-                                
-
-                            }
-                            {/* <FetchAvatar user={this.state.user} /> */}
-                            {/* <img id="logo" src={require("https://cors-anywhere.herokuapp.com/http://secure.runescape.com/m=avatar-rs/zee+pk/chat.png")} alt="Site Logo" /> */}
-                            <Img src={"https://cors-anywhere.herokuapp.com/http://secure.runescape.com/m=avatar-rs/" + this.nameWithPluses() + "/chat.png"} />
+                            {/* avatar image */}
+                            <Img src={"http://secure.runescape.com/m=avatar-rs/" + this.nameWithPluses() + "/chat.png"} />
                         </div>
                         <div>
+                            {/* username */}
                             <h1 id="username">{this.nameWithSpaces()}</h1>
                         </div>
                         {/* player grid */}
-                        <div id="profile-info" className="grid-profile">
-                            <div className="grid-item-prof">
-                                <p>RuneScore:</p>
-                            </div>
-                            <div className="grid-item-prof">
-                                <img src="RuneScore.png" alt="" /> <p id="runescore" />
-                            </div>
-                            <div className="grid-item-prof">
-                                <small>Rank:</small>
-                            </div>
-                            <div className="grid-item-prof">
-                                <p id="runescore-rank" />
-                            </div>
+                     
 
-                            <div className="grid-item-prof">
-                                <p>Total XP:</p>
-                            </div>
-                            <div className="grid-item-prof">
-                                <img src="skillsIcon.png" alt="" /> <p id="total-xp" />
-                            </div>
-                            <div className="grid-item-prof">
-                                <small>Rank:</small>
-                            </div>
-                            <div className="grid-item-prof">
-                                <p id="total-xp-rank" />
-                            </div>
-                        </div>
+                            {/* user info component goes here */}
+                            <FetchUserData user={this.state.user} />
+                        
                     </div>
-                    {/* activity table */}
+                    {/* activity table component goes here */}
                     <div className="grid-item">
-                        <table id="activity-table" className="table" align="right">
+                        <FetchActivityLog user={this.state.user} />
+                        {/* <table id="activity-table" className="table" align="right">
                             <thead className="table-primary">
                                 <tr>
                                     <th scope="col">Activity Feed</th>
                                 </tr>
                             </thead>
                             <tbody />
-                        </table>
+                        </table> */}
                     </div>
                 </div>
 

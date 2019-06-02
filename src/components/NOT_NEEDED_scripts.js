@@ -170,23 +170,23 @@ function loadData(res, player_name) {
 }
 
 
-// function loadActivities (res_dict){
-//     for (var j = 0; j < 20; j++) {
-//         // console.log(res_dict['activities'][j]['text'])
-//         var act_text = res_dict['activities'][j]['text']
-//         var xp_index = act_text.indexOf('XP')
-//         if (xp_index > 0){
-//             var sub_1 = act_text.substring(0,xp_index-6)
-//             var sub_2 = act_text.substring(xp_index+2,act_text.length)
-//             act_text = sub_1 + 'm XP' + sub_2
-//         }
-//         document.getElementById('activity' + j).innerHTML = act_text 
-//         document.getElementById('activity' + j).setAttribute("title", res_dict['activities'][j]['date'])
-//     }
-//     var activity_table = document.getElementById("activity-table")
-//     activity_table.style.display = "block"
+function loadActivities (res_dict){
+    for (var j = 0; j < 20; j++) {
+        // console.log(res_dict['activities'][j]['text'])
+        var act_text = res_dict['activities'][j]['text']
+        var xp_index = act_text.indexOf('XP')
+        if (xp_index > 0){
+            var sub_1 = act_text.substring(0,xp_index-6)
+            var sub_2 = act_text.substring(xp_index+2,act_text.length)
+            act_text = sub_1 + 'm XP' + sub_2
+        }
+        document.getElementById('activity' + j).innerHTML = act_text 
+        document.getElementById('activity' + j).setAttribute("title", res_dict['activities'][j]['date'])
+    }
+    var activity_table = document.getElementById("activity-table")
+    activity_table.style.display = "block"
 
-// }
+}
 
 // function clearActivities(){
 //     var activity_table = document.getElementById("activity-table")

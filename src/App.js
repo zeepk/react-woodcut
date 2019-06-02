@@ -1,7 +1,7 @@
 import React from "react";
 import SearchField from "react-search-field";
 import "./App.css";
-import Load_data from "./components/load_data";
+import Load_data from "./components/NOT_NEEDED_load_data";
 import NameForm from "./components/NameForm";
 import Parent_fetcher from "./components/parent_fetcher";
 // import {Parent, Child} from "./components/testing";
