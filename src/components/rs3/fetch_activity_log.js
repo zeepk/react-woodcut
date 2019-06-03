@@ -245,7 +245,7 @@ export default class fetch_activity_log extends Component {
     if (error) {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
-      return <div><img src={require("./loading.gif")} alt="loading screen"/></div>;
+      return <div><img src={require("../loading.gif")} alt="loading screen"/></div>;
     } else 
     {
       var new_array = organize_data(items);

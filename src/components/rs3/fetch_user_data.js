@@ -182,7 +182,7 @@ export default class fetch_user_data extends Component {
         if (error) {
             return <div>Error: {error.message}</div>;
         } else if (!isLoaded) {
-            return <div><img src={require("./loading.gif")} alt="loading screen"/></div>;
+            return <div><img src={require("../loading.gif")} alt="loading screen"/></div>;
         } else {
             var new_array = organize_data(items)
             return (
@@ -192,7 +192,7 @@ export default class fetch_user_data extends Component {
                             <p>RuneScore:</p>
                         </div>
                         <div className="grid-item-prof">
-                            <img src={require("./RuneScore.png")} alt="RuneScore Symbol" /> {new_array[0].toLocaleString()}
+                            <img src={require("../RuneScore.png")} alt="RuneScore Symbol" /> {new_array[0].toLocaleString()}
                         </div>
                         <div className="grid-item-prof" id="smaller">
                             <small>Rank:</small>
@@ -205,7 +205,7 @@ export default class fetch_user_data extends Component {
                             <p>Total XP:</p>
                         </div>
                         <div className="grid-item-prof">
-                            <img src={require("./skillsIcon.png")} alt="Stats Symbol" /> {new_array[2].toLocaleString()}
+                            <img src={require("../skillsIcon.png")} alt="Stats Symbol" /> {new_array[2].toLocaleString()}
                         </div>
                         <div className="grid-item-prof" id="smaller">
                             <small>Rank:</small>

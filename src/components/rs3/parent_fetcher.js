@@ -3,7 +3,7 @@ import FetchStats from "./fetch_rs3_stats";
 import FetchMinigames from "./fetch_rs3_minigames";
 import FetchActivityLog from "./fetch_activity_log";
 import FetchUserData from "./fetch_user_data";
-import NameForm from "./NameForm";
+import NameForm from "../NameForm";
 import Img from 'react-image';
 import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
@@ -34,7 +34,7 @@ export default class parent_fetcher extends Component {
             <div>
                 <nav id="topnav" className="navbar navbar-expand-lg navbar-dark bg-green">
                     <a className="navbar-brand" href=" ">
-                        <img id="logo" src={require("../woodcutLogo.png")} alt="Site Logo" />
+                        <img id="logo" src={require("../../woodcutLogo.png")} alt="Site Logo" />
                     </a>
                     <button
                         className="navbar-toggler"

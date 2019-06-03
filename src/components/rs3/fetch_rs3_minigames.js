@@ -188,8 +188,8 @@ export default class fetch_stats extends Component {
       [47, 'Heist Guard Level'],
       [48, 'Heist Robber Level'],
       [49, 'CFP 5 Game Average'],
-      [50, 'UNK'],
-      [51, 'UNK'],
+      [50, 'AF15: Cow Tipping'],
+      [51, 'AF15: Rats killed after the miniquest'],
       [52, 'Runescore'],
       [53, 'Easy Clues'],
       [54, 'Medium Clues'],
@@ -199,7 +199,7 @@ export default class fetch_stats extends Component {
     ];
     function organize_data(dict, data_array) {
 
-      var skills = {};
+    //   var skills = {};
       var minigames = {};
 
       try {
@@ -209,7 +209,7 @@ export default class fetch_stats extends Component {
       catch (error) {
 
         var empty_activities = {}
-        for (var i = 0; i < 28; i++) {
+        for (var i = 28; i < 58; i++) {
           empty_activities[i] = " ";
         }
         console.log("empty stats");
@@ -219,206 +219,195 @@ export default class fetch_stats extends Component {
       // console.log(dict)
       var temp_data_array = dict.split("\n");
 
-      for (var i = 0; i < 28; i++) {
+      for (var i = 28; i < 58; i++) {
         var individual_skill_array = temp_data_array[i].split(",");
-        var xp = individual_skill_array[2];
-        xp = parseInt(xp, 10);
-        skills[i] = {
+        var score = individual_skill_array[1];
+        if(individual_skill_array[0] === "-1"){
+            individual_skill_array[0] = "Not Ranked";
+        }
+        if(score === "-1"){
+            score = " ";
+        }
+        else{
+            score = parseInt(score, 10);
+            score = score.toLocaleString("en");
+        }
+        minigames[i] = {
           id: i,
           name: data_array[i][1],
           rank: individual_skill_array[0],
-          level: individual_skill_array[1],
-          xp: xp.toLocaleString("en")
+          score: score
         };
         // console.log(temp_data_array[1])
       }
-      return skills;
+      return minigames;
     }
     var { error, isLoaded, items } = this.state;
     if (error) {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
-      return <div><img src={require("./loading.gif")} alt="loading screen" /></div>;
+      return <div><img src={require("../loading.gif")} alt="loading screen" /></div>;
     } else {
       var new_array = organize_data(items, data_array)
       return (<div>
         <Table id="stat-table">
           <thead className="table-primary">
             <tr>
-              <th scope="col">Stat</th>
-              <th scope="col">Level</th>
-              <th scope="col">XP</th>
+              <th scope="col">Minigame</th>
+              <th scope="col">Score</th>
               <th scope="col">Rank</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>{new_array[0].name}</td>
-              <td>{new_array[0].level}</td>
-              <td>{new_array[0].xp}</td>
-              <td>{new_array[0].rank}</td>
+              <td>{new_array[28].name}</td>
+              <td>{new_array[28].score}</td>
+              <td>{new_array[28].rank}</td>
             </tr>
             <tr>
-              <td>{new_array[1].name}</td>
-              <td>{new_array[1].level}</td>
-              <td>{new_array[1].xp}</td>
-              <td>{new_array[1].rank}</td>
+              <td>{new_array[29].name}</td>
+              <td>{new_array[29].score}</td>
+              <td>{new_array[29].rank}</td>
             </tr>
             <tr>
-              <td>{new_array[2].name}</td>
-              <td>{new_array[2].level}</td>
-              <td>{new_array[2].xp}</td>
-              <td>{new_array[2].rank}</td>
+              <td>{new_array[30].name}</td>
+              <td>{new_array[30].score}</td>
+              <td>{new_array[30].rank}</td>
             </tr>
             <tr>
-              <td>{new_array[3].name}</td>
-              <td>{new_array[3].level}</td>
-              <td>{new_array[3].xp}</td>
-              <td>{new_array[3].rank}</td>
+              <td>{new_array[31].name}</td>
+              <td>{new_array[31].score}</td>
+              <td>{new_array[31].rank}</td>
             </tr>
             <tr>
-              <td>{new_array[4].name}</td>
-              <td>{new_array[4].level}</td>
-              <td>{new_array[4].xp}</td>
-              <td>{new_array[4].rank}</td>
+              <td>{new_array[32].name}</td>
+              <td>{new_array[32].score}</td>
+              <td>{new_array[32].rank}</td>
             </tr>
             <tr>
-              <td>{new_array[5].name}</td>
-              <td>{new_array[5].level}</td>
-              <td>{new_array[5].xp}</td>
-              <td>{new_array[5].rank}</td>
+              <td>{new_array[33].name}</td>
+              <td>{new_array[33].score}</td>
+              <td>{new_array[33].rank}</td>
             </tr>
             <tr>
-              <td>{new_array[6].name}</td>
-              <td>{new_array[6].level}</td>
-              <td>{new_array[6].xp}</td>
-              <td>{new_array[6].rank}</td>
+              <td>{new_array[34].name}</td>
+              <td>{new_array[34].score}</td>
+              <td>{new_array[34].rank}</td>
             </tr>
             <tr>
-              <td>{new_array[7].name}</td>
-              <td>{new_array[7].level}</td>
-              <td>{new_array[7].xp}</td>
-              <td>{new_array[7].rank}</td>
+              <td>{new_array[35].name}</td>
+              <td>{new_array[35].score}</td>
+              <td>{new_array[35].rank}</td>
             </tr>
             <tr>
-              <td>{new_array[8].name}</td>
-              <td>{new_array[8].level}</td>
-              <td>{new_array[8].xp}</td>
-              <td>{new_array[8].rank}</td>
+              <td>{new_array[36].name}</td>
+              <td>{new_array[36].score}</td>
+              <td>{new_array[36].rank}</td>
             </tr>
             <tr>
-              <td>{new_array[9].name}</td>
-              <td>{new_array[9].level}</td>
-              <td>{new_array[9].xp}</td>
-              <td>{new_array[9].rank}</td>
+              <td>{new_array[37].name}</td>
+              <td>{new_array[37].score}</td>
+              <td>{new_array[37].rank}</td>
             </tr>
             <tr>
-              <td>{new_array[10].name}</td>
-              <td>{new_array[10].level}</td>
-              <td>{new_array[10].xp}</td>
-              <td>{new_array[10].rank}</td>
+              <td>{new_array[38].name}</td>
+              <td>{new_array[38].score}</td>
+              <td>{new_array[38].rank}</td>
             </tr>
             <tr>
-              <td>{new_array[11].name}</td>
-              <td>{new_array[11].level}</td>
-              <td>{new_array[11].xp}</td>
-              <td>{new_array[11].rank}</td>
+              <td>{new_array[39].name}</td>
+              <td>{new_array[39].score}</td>
+              <td>{new_array[39].rank}</td>
             </tr>
             <tr>
-              <td>{new_array[12].name}</td>
-              <td>{new_array[12].level}</td>
-              <td>{new_array[12].xp}</td>
-              <td>{new_array[12].rank}</td>
+              <td>{new_array[40].name}</td>
+              <td>{new_array[40].score}</td>
+              <td>{new_array[40].rank}</td>
             </tr>
             <tr>
-              <td>{new_array[13].name}</td>
-              <td>{new_array[13].level}</td>
-              <td>{new_array[13].xp}</td>
-              <td>{new_array[13].rank}</td>
+              <td>{new_array[41].name}</td>
+              <td>{new_array[41].score}</td>
+              <td>{new_array[41].rank}</td>
             </tr>
             <tr>
-              <td>{new_array[14].name}</td>
-              <td>{new_array[14].level}</td>
-              <td>{new_array[14].xp}</td>
-              <td>{new_array[14].rank}</td>
+              <td>{new_array[42].name}</td>
+              <td>{new_array[42].score}</td>
+              <td>{new_array[42].rank}</td>
             </tr>
             <tr>
-              <td>{new_array[15].name}</td>
-              <td>{new_array[15].level}</td>
-              <td>{new_array[15].xp}</td>
-              <td>{new_array[15].rank}</td>
+              <td>{new_array[43].name}</td>
+              <td>{new_array[43].score}</td>
+              <td>{new_array[43].rank}</td>
             </tr>
             <tr>
-              <td>{new_array[16].name}</td>
-              <td>{new_array[16].level}</td>
-              <td>{new_array[16].xp}</td>
-              <td>{new_array[16].rank}</td>
+              <td>{new_array[44].name}</td>
+              <td>{new_array[44].score}</td>
+              <td>{new_array[44].rank}</td>
             </tr>
             <tr>
-              <td>{new_array[17].name}</td>
-              <td>{new_array[17].level}</td>
-              <td>{new_array[17].xp}</td>
-              <td>{new_array[17].rank}</td>
+              <td>{new_array[45].name}</td>
+              <td>{new_array[45].score}</td>
+              <td>{new_array[45].rank}</td>
             </tr>
             <tr>
-              <td>{new_array[18].name}</td>
-              <td>{new_array[18].level}</td>
-              <td>{new_array[18].xp}</td>
-              <td>{new_array[18].rank}</td>
+              <td>{new_array[46].name}</td>
+              <td>{new_array[46].score}</td>
+              <td>{new_array[46].rank}</td>
             </tr>
             <tr>
-              <td>{new_array[19].name}</td>
-              <td>{new_array[19].level}</td>
-              <td>{new_array[19].xp}</td>
-              <td>{new_array[19].rank}</td>
+              <td>{new_array[47].name}</td>
+              <td>{new_array[47].score}</td>
+              <td>{new_array[47].rank}</td>
             </tr>
             <tr>
-              <td>{new_array[20].name}</td>
-              <td>{new_array[20].level}</td>
-              <td>{new_array[20].xp}</td>
-              <td>{new_array[20].rank}</td>
+              <td>{new_array[48].name}</td>
+              <td>{new_array[48].score}</td>
+              <td>{new_array[48].rank}</td>
             </tr>
             <tr>
-              <td>{new_array[21].name}</td>
-              <td>{new_array[21].level}</td>
-              <td>{new_array[21].xp}</td>
-              <td>{new_array[21].rank}</td>
+              <td>{new_array[49].name}</td>
+              <td>{new_array[49].score}</td>
+              <td>{new_array[49].rank}</td>
             </tr>
             <tr>
-              <td>{new_array[22].name}</td>
-              <td>{new_array[22].level}</td>
-              <td>{new_array[22].xp}</td>
-              <td>{new_array[22].rank}</td>
+              <td>{new_array[50].name}</td>
+              <td>{new_array[50].score}</td>
+              <td>{new_array[50].rank}</td>
             </tr>
             <tr>
-              <td>{new_array[23].name}</td>
-              <td>{new_array[23].level}</td>
-              <td>{new_array[23].xp}</td>
-              <td>{new_array[23].rank}</td>
+              <td>{new_array[51].name}</td>
+              <td>{new_array[51].score}</td>
+              <td>{new_array[51].rank}</td>
             </tr>
             <tr>
-              <td>{new_array[24].name}</td>
-              <td>{new_array[24].level}</td>
-              <td>{new_array[24].xp}</td>
-              <td>{new_array[24].rank}</td>
+              <td>{new_array[52].name}</td>
+              <td>{new_array[52].score}</td>
+              <td>{new_array[52].rank}</td>
             </tr>
             <tr>
-              <td>{new_array[25].name}</td>
-              <td>{new_array[25].level}</td>
-              <td>{new_array[25].xp}</td>
-              <td>{new_array[25].rank}</td>
+              <td>{new_array[53].name}</td>
+              <td>{new_array[53].score}</td>
+              <td>{new_array[53].rank}</td>
             </tr>
             <tr>
-              <td>{new_array[26].name}</td>
-              <td>{new_array[26].level}</td>
-              <td>{new_array[26].xp}</td>
-              <td>{new_array[26].rank}</td>
+              <td>{new_array[54].name}</td>
+              <td>{new_array[54].score}</td>
+              <td>{new_array[54].rank}</td>
             </tr>
             <tr>
-              <td>{new_array[27].name}</td>
-              <td>{new_array[27].level}</td>
-              <td>{new_array[27].xp}</td>
-              <td>{new_array[27].rank}</td>
+              <td>{new_array[55].name}</td>
+              <td>{new_array[55].score}</td>
+              <td>{new_array[55].rank}</td>
+            </tr>
+            <tr>
+              <td>{new_array[56].name}</td>
+              <td>{new_array[56].score}</td>
+              <td>{new_array[56].rank}</td>
+            </tr>
+            <tr>
+              <td>{new_array[57].name}</td>
+              <td>{new_array[57].score}</td>
+              <td>{new_array[57].rank}</td>
             </tr>
           </tbody>
         </Table>

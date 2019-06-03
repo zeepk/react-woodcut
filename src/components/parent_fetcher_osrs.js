@@ -1,12 +1,9 @@
 import React, { Component } from 'react'
-import FetchStats from "./fetch_rs3_stats";
-import FetchMinigames from "./fetch_rs3_minigames";
-import FetchActivityLog from "./fetch_activity_log";
-import FetchUserData from "./fetch_user_data";
+import FetchStats from "./fetch_osrs_stats";
+import FetchMinigames from "./fetch_osrs_minigames";
 import NameForm from "./NameForm";
 import Img from 'react-image';
-import Tabs from 'react-bootstrap/Tabs';
-import Tab from 'react-bootstrap/Tab';
+
 import { Link } from 'react-router-dom'
 export default class parent_fetcher_osrs extends Component {
     constructor(props) {
@@ -76,16 +73,14 @@ export default class parent_fetcher_osrs extends Component {
                         {/* stat table component goes here */}
                         <br/><br/>
                         <FetchStats user={this.state.user} />
+                        
 
                     </div>
 
 
                     {/* player info */}
                     <div className="grid-item" id="player-info">
-                        <div>
-                            {/* avatar image */}
-                            <Img src={"http://secure.runescape.com/m=avatar-rs/" + this.nameWithPluses() + "/chat.png"} />
-                        </div>
+                        
                         <div>
                             {/* username */}
                             <h1 id="username">{this.nameWithSpaces()}</h1>
@@ -94,19 +89,13 @@ export default class parent_fetcher_osrs extends Component {
                      
 
                             {/* user info component goes here */}
-                            <FetchUserData user={this.state.user} />
+                            {/* <FetchUserData user={this.state.user} /> */}
                         
                     </div>
                     {/* activity table component goes here */}
                     <div className="grid-item">
-                    <Tabs defaultActiveKey="activity" id="uncontrolled-tab-example">
-                    <Tab eventKey="activity" title="Activity">
-                        <FetchActivityLog user={this.state.user} />
-                        </Tab>
-                        <Tab eventKey="minigames" title="Minigame Stats">
-                        <FetchMinigames user={this.state.user} />                        
-                        </Tab>
-                    </Tabs>    
+                    <br/><br/>
+                        <FetchMinigames user={this.state.user} />
                     </div>
                 </div>
 
