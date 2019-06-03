@@ -8,6 +8,9 @@
   margin-left: auto;
   text-align: left;
 }
+.nav-item {
+  padding: 10px;
+}
 
 .grid-container {
   display: grid;

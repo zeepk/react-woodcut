@@ -8,7 +8,7 @@ import Img from 'react-image';
 import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
 import { Link } from 'react-router-dom'
-export default class parent_fetcher extends Component {
+export default class parent_fetcher_osrs extends Component {
     constructor(props) {
         super(props);
         this.state = { user: 'zee pk' };
@@ -50,11 +50,11 @@ export default class parent_fetcher extends Component {
 
                     <div className="collapse navbar-collapse" id="navbarColor01">
                         <ul className="navbar-nav mr-auto">
-                            <li className="nav-item active">
+                            <li className="nav-item">
                                 <Link to="/">rs3</Link>
                             </li>
                             
-                            <li className="nav-item">
+                            <li className="nav-item active">
                                 <Link to="/osrs">osrs</Link>
                             </li>
                         </ul>
