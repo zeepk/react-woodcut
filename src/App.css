@@ -1,5 +1,9 @@
+#stat-table {
+  text-align: left;
+}
 #activity-table {
   width: auto;
+  min-width: 100%;
   margin-right: 0px;
   margin-left: auto;
   text-align: left;
@@ -52,9 +56,6 @@
   /* visibility: hidden; */
 }
 
-#stat-table {
-  text-align: left;
-}
 
 #topnav {
   padding-right: 5%;
