@@ -7,6 +7,7 @@ import NameForm from "../NameForm";
 import Img from 'react-image';
 import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
+import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom'
 export default class parent_fetcher extends Component {
     constructor(props) {
@@ -36,7 +37,7 @@ export default class parent_fetcher extends Component {
                     <a className="navbar-brand" href=" ">
                         <img id="logo" src={require("../../woodcutLogo.png")} alt="Site Logo" />
                     </a>
-                    <button
+                    {/* <button
                         className="navbar-toggler"
                         type="button"
                         data-toggle="collapse"
@@ -46,9 +47,9 @@ export default class parent_fetcher extends Component {
                         aria-label="Toggle navigation"
                     >
                         <span className="navbar-toggler-icon" />
-                    </button>
+                    </button> */}
 
-                    <div className="collapse navbar-collapse" id="navbarColor01">
+                    {/* <div className="collapse navbar-collapse" id="navbarColor01"> */}
                         <ul className="navbar-nav mr-auto">
                             <li className="nav-item active">
                                 <Link to="/">rs3</Link>
@@ -63,7 +64,7 @@ export default class parent_fetcher extends Component {
                         <NameForm user={this.state.user} changeName={(user) => this.setState({ user })} />
 
 
-                    </div>
+                    {/* </div> */}
                 </nav>
 
                 {/* <!-- GRID --> */}

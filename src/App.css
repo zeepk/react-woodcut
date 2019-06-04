@@ -11,15 +11,21 @@
 .nav-item {
   padding: 10px;
 }
-
+@media screen and (max-width: 1220px) {
+.grid-container div:nth-child(2) {
+  grid-column: 1;
+  grid-row: 1;
+}
+}
 .grid-container {
   display: grid;
-  grid-template-columns: 33% 33% 33%;
-  grid-template-rows: 10% 10% 10%;
+  grid-template-columns: repeat(auto-fit, minmax(367px, 600px));
+  /* grid-template-rows: 10% 10% 10%; */
   /* background-color: #2196F3; */
   padding: 10px;
 }
 .grid-item {
+  display: inline;
   /* max-width: 100%;  */
   /* background-color: rgba(255, 255, 255, 0.8); */
   /* border: 1px solid rgba(0, 0, 0, 0.8); */
@@ -58,7 +64,10 @@
 #profile-info {
   /* visibility: hidden; */
 }
-
+#searchbar {
+  padding-bottom: 6px;  
+  min-height: 35px;
+}
 
 #topnav {
   padding-right: 5%;

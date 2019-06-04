@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
+import Button from 'react-bootstrap/Button';
 
 export default class NameForm extends Component {
     constructor(props) {
@@ -43,10 +44,9 @@ export default class NameForm extends Component {
         <div>
         <form onSubmit={this.handleSubmit}>
           {/* <label> */}
-            Name:
-            <input type="text" value={this.props.value} onChange={this.handleChange.bind(this)}/>
+            <input type="text" id="searchbar" placeholder="Username" value={this.props.value} onChange={this.handleChange.bind(this)}/>
           {/* </label> */}
-          <input type="submit" value="Submit" />
+          <Button variant="primary" type="submit">Enter</Button>
         </form>
 
       </div>
