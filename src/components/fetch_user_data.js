@@ -15,16 +15,6 @@ export default class fetch_user_data extends Component {
         this.componentWillUnmount = this.componentWillUnmount.bind(this);
     }
 
-    // state = {
-    //         error: null,
-    //     isLoaded: false,
-    //     items: " "  
-    // }
-    //   shouldComponentUpdate() {
-
-    //     return false; // Will cause component to never re-render.
-    // }
-
 
     componentDidMount() {
         this._isMounted = true;
