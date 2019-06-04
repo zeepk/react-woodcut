@@ -1,23 +1,35 @@
 import React from "react";
-import SearchField from "react-search-field";
 import "./App.css";
-import Load_data from "./components/NOT_NEEDED_load_data";
-import NameForm from "./components/NameForm";
-import Parent_fetcher from "./components/parent_fetcher";
-// import {Parent, Child} from "./components/testing";
-import Fetch_stats from "./components/fetch_stats";
+import Parent_fetcher from "./components/rs3/parent_fetcher";
+import Parent_fetcher_osrs from "./components/parent_fetcher_osrs";
+import { BrowserRouter as Router, Route  } from 'react-router-dom';
 export default function App() {
 
   return (
+    <React.Fragment>
+    <Router>
     <div className="App">
       <link
         rel="stylesheet"
         href="https://bootswatch.com/4/darkly/bootstrap.min.css"
       />
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" />
+      <Route exact path="/" render={props => (
+      <React.Fragment>
       
       <Parent_fetcher />
 
+      </React.Fragment>
+)} />
+<Route path="/OSRS" render={props => (
+      <React.Fragment>
+      
+      <Parent_fetcher_osrs />
+
+      </React.Fragment>
+)} />
     </div>
+    </Router>
+  </React.Fragment>
   );
 }

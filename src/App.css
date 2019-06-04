@@ -1,8 +1,15 @@
+#stat-table {
+  text-align: left;
+}
 #activity-table {
   width: auto;
+  min-width: 100%;
   margin-right: 0px;
   margin-left: auto;
   text-align: left;
+}
+.nav-item {
+  padding: 10px;
 }
 
 .grid-container {
@@ -52,9 +59,6 @@
   /* visibility: hidden; */
 }
 
-#stat-table {
-  text-align: left;
-}
 
 #topnav {
   padding-right: 5%;

@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-import FetchStats from "./fetch_stats";
-import FetchActivityLog from "./fetch_activity_log";
-import FetchUserData from "./fetch_user_data";
+import FetchStats from "./fetch_osrs_stats";
+import FetchMinigames from "./fetch_osrs_minigames";
 import NameForm from "./NameForm";
 import Img from 'react-image';
-export default class parent_fetcher extends Component {
+
+import { Link } from 'react-router-dom'
+export default class parent_fetcher_osrs extends Component {
     constructor(props) {
         super(props);
         this.state = { user: 'zee pk' };
@@ -23,7 +24,7 @@ export default class parent_fetcher extends Component {
         username = username.replace('_', ' ');
         return username;
     }
-
+    //testing git
 
     render() {
         return (
@@ -46,10 +47,12 @@ export default class parent_fetcher extends Component {
 
                     <div className="collapse navbar-collapse" id="navbarColor01">
                         <ul className="navbar-nav mr-auto">
+                            <li className="nav-item">
+                                <Link to="/">rs3</Link>
+                            </li>
+                            
                             <li className="nav-item active">
-                                <a className="nav-link" href="">
-                                    Home <span className="sr-only">(current)</span>
-                                </a>
+                                <Link to="/osrs">osrs</Link>
                             </li>
                         </ul>
 
@@ -68,17 +71,16 @@ export default class parent_fetcher extends Component {
                     <div className="grid-item" id="stat-table">
 
                         {/* stat table component goes here */}
+                        <br/><br/>
                         <FetchStats user={this.state.user} />
+                        
 
                     </div>
 
 
                     {/* player info */}
                     <div className="grid-item" id="player-info">
-                        <div>
-                            {/* avatar image */}
-                            <Img src={"http://secure.runescape.com/m=avatar-rs/" + this.nameWithPluses() + "/chat.png"} />
-                        </div>
+                        
                         <div>
                             {/* username */}
                             <h1 id="username">{this.nameWithSpaces()}</h1>
@@ -87,20 +89,13 @@ export default class parent_fetcher extends Component {
                      
 
                             {/* user info component goes here */}
-                            <FetchUserData user={this.state.user} />
+                            {/* <FetchUserData user={this.state.user} /> */}
                         
                     </div>
                     {/* activity table component goes here */}
                     <div className="grid-item">
-                        <FetchActivityLog user={this.state.user} />
-                        {/* <table id="activity-table" className="table" align="right">
-                            <thead className="table-primary">
-                                <tr>
-                                    <th scope="col">Activity Feed</th>
-                                </tr>
-                            </thead>
-                            <tbody />
-                        </table> */}
+                    <br/><br/>
+                        <FetchMinigames user={this.state.user} />
                     </div>
                 </div>
 
