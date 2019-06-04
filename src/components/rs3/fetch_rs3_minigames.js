@@ -250,7 +250,7 @@ export default class fetch_stats extends Component {
     } else {
       var new_array = organize_data(items, data_array)
       return (<div>
-        <Table id="stat-table">
+        <Table striped id="stat-table">
           <thead className="table-primary">
             <tr>
               <th scope="col">Minigame</th>

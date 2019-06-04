@@ -251,7 +251,7 @@ export default class fetch_activity_log extends Component {
       var new_array = organize_data(items);
       var date_array = get_dates(items);
       return (<div>
-        <Table id="activity-table" className="table" align="right">
+        <Table striped id="activity-table" className="table" align="right">
           <thead className="table-primary">
             <tr>
               <th scope="col">Activity Feed</th>

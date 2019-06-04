@@ -15,17 +15,6 @@ export default class fetch_stats extends Component {
     this.componentWillUnmount = this.componentWillUnmount.bind(this);
   }
 
-  // state = {
-  //         error: null,
-  //     isLoaded: false,
-  //     items: " "  
-  // }
-  //   shouldComponentUpdate() {
-
-  //     return false; // Will cause component to never re-render.
-  // }
-
-
   componentDidMount() {
     this._isMounted = true;
     console.log("mount called");
@@ -242,7 +231,7 @@ export default class fetch_stats extends Component {
     } else {
       var new_array = organize_data(items, data_array)
       return (<div>
-        <Table id="stat-table">
+        <Table striped id="stat-table">
           <thead className="table-primary">
             <tr>
               <th scope="col">Stat</th>

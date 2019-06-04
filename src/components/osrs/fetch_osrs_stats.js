@@ -218,7 +218,7 @@ export default class fetch_stats extends Component {
     } else {
       var new_array = organize_stat_data(items, os_data_array)
       return (<div>
-        <Table id="stat-table">
+        <Table striped id="stat-table">
           <thead className="table-primary">
             <tr>
               <th scope="col">Stat</th>
