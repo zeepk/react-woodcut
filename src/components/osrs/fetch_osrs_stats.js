@@ -172,8 +172,10 @@ export default class fetch_stats extends Component {
         [31, 'Master Clues'],
         [32, 'LMS Rank'],
       ];
-    function organize_minigame_data(dict, os_data_array) {
-        var minigames = {};
+    function organize_stat_data(dict, os_data_array) {
+
+      var skills = {};
+      
 
       try {
         var temp_data_array = dict.split("\n");
@@ -182,7 +184,7 @@ export default class fetch_stats extends Component {
       catch (error) {
 
         var empty_activities = {}
-        for (var i = 24; i < 33; i++) {
+        for (var i = 0; i < 24; i++) {
           empty_activities[i] = " ";
         }
         console.log("empty stats");
@@ -192,91 +194,185 @@ export default class fetch_stats extends Component {
       // console.log(dict)
       var temp_data_array = dict.split("\n");
 
-      for (var i = 24; i < 33; i++) {
+      for (var i = 0; i < 24; i++) {
         var individual_skill_array = temp_data_array[i].split(",");
-        var score = individual_skill_array[1];
-        if(individual_skill_array[0] === "-1"){
-            individual_skill_array[0] = "Not Ranked";
-        }
-        if(score === "-1"){
-            score = " ";
-        }
-        else{
-            score = parseInt(score, 10);
-            score = score.toLocaleString("en");
-        }
-        minigames[i] = {
+        var xp = individual_skill_array[2];
+        xp = parseInt(xp, 10);
+        skills[i] = {
           id: i,
           name: os_data_array[i][1],
           rank: individual_skill_array[0],
-          score: score
+          level: individual_skill_array[1],
+          xp: xp.toLocaleString("en")
         };
         // console.log(temp_data_array[1])
       }
-      return minigames;
+      return skills;
     }
+    
     var { error, isLoaded, items } = this.state;
     if (error) {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
-      return <div><img src={require("./loading.gif")} alt="loading screen" /></div>;
+      return <div><img src={require("../loading.gif")} alt="loading screen" /></div>;
     } else {
-      var new_array = organize_minigame_data(items, os_data_array)
+      var new_array = organize_stat_data(items, os_data_array)
       return (<div>
         <Table id="stat-table">
           <thead className="table-primary">
             <tr>
-              <th scope="col">Minigame</th>
-              <th scope="col">Score</th>
+              <th scope="col">Stat</th>
+              <th scope="col">Level</th>
+              <th scope="col">XP</th>
               <th scope="col">Rank</th>
             </tr>
           </thead>
           <tbody>
-          <tr>
-              <td>{new_array[24].name}</td>
-              <td>{new_array[24].score}</td>
-              <td>{new_array[24].rank}</td>
+            <tr>
+              <td>{new_array[0].name}</td>
+              <td>{new_array[0].level}</td>
+              <td>{new_array[0].xp}</td>
+              <td>{new_array[0].rank}</td>
             </tr>
             <tr>
-              <td>{new_array[25].name}</td>
-              <td>{new_array[25].score}</td>
-              <td>{new_array[25].rank}</td>
+              <td>{new_array[1].name}</td>
+              <td>{new_array[1].level}</td>
+              <td>{new_array[1].xp}</td>
+              <td>{new_array[1].rank}</td>
             </tr>
             <tr>
-              <td>{new_array[26].name}</td>
-              <td>{new_array[26].score}</td>
-              <td>{new_array[26].rank}</td>
+              <td>{new_array[2].name}</td>
+              <td>{new_array[2].level}</td>
+              <td>{new_array[2].xp}</td>
+              <td>{new_array[2].rank}</td>
             </tr>
             <tr>
-              <td>{new_array[27].name}</td>
-              <td>{new_array[27].score}</td>
-              <td>{new_array[27].rank}</td>
+              <td>{new_array[3].name}</td>
+              <td>{new_array[3].level}</td>
+              <td>{new_array[3].xp}</td>
+              <td>{new_array[3].rank}</td>
             </tr>
             <tr>
-              <td>{new_array[28].name}</td>
-              <td>{new_array[28].score}</td>
-              <td>{new_array[28].rank}</td>
+              <td>{new_array[4].name}</td>
+              <td>{new_array[4].level}</td>
+              <td>{new_array[4].xp}</td>
+              <td>{new_array[4].rank}</td>
             </tr>
             <tr>
-              <td>{new_array[29].name}</td>
-              <td>{new_array[29].score}</td>
-              <td>{new_array[29].rank}</td>
+              <td>{new_array[5].name}</td>
+              <td>{new_array[5].level}</td>
+              <td>{new_array[5].xp}</td>
+              <td>{new_array[5].rank}</td>
             </tr>
             <tr>
-              <td>{new_array[30].name}</td>
-              <td>{new_array[30].score}</td>
-              <td>{new_array[30].rank}</td>
+              <td>{new_array[6].name}</td>
+              <td>{new_array[6].level}</td>
+              <td>{new_array[6].xp}</td>
+              <td>{new_array[6].rank}</td>
             </tr>
             <tr>
-              <td>{new_array[31].name}</td>
-              <td>{new_array[31].score}</td>
-              <td>{new_array[31].rank}</td>
+              <td>{new_array[7].name}</td>
+              <td>{new_array[7].level}</td>
+              <td>{new_array[7].xp}</td>
+              <td>{new_array[7].rank}</td>
             </tr>
             <tr>
-              <td>{new_array[32].name}</td>
-              <td>{new_array[32].score}</td>
-              <td>{new_array[32].rank}</td>
+              <td>{new_array[8].name}</td>
+              <td>{new_array[8].level}</td>
+              <td>{new_array[8].xp}</td>
+              <td>{new_array[8].rank}</td>
             </tr>
+            <tr>
+              <td>{new_array[9].name}</td>
+              <td>{new_array[9].level}</td>
+              <td>{new_array[9].xp}</td>
+              <td>{new_array[9].rank}</td>
+            </tr>
+            <tr>
+              <td>{new_array[10].name}</td>
+              <td>{new_array[10].level}</td>
+              <td>{new_array[10].xp}</td>
+              <td>{new_array[10].rank}</td>
+            </tr>
+            <tr>
+              <td>{new_array[11].name}</td>
+              <td>{new_array[11].level}</td>
+              <td>{new_array[11].xp}</td>
+              <td>{new_array[11].rank}</td>
+            </tr>
+            <tr>
+              <td>{new_array[12].name}</td>
+              <td>{new_array[12].level}</td>
+              <td>{new_array[12].xp}</td>
+              <td>{new_array[12].rank}</td>
+            </tr>
+            <tr>
+              <td>{new_array[13].name}</td>
+              <td>{new_array[13].level}</td>
+              <td>{new_array[13].xp}</td>
+              <td>{new_array[13].rank}</td>
+            </tr>
+            <tr>
+              <td>{new_array[14].name}</td>
+              <td>{new_array[14].level}</td>
+              <td>{new_array[14].xp}</td>
+              <td>{new_array[14].rank}</td>
+            </tr>
+            <tr>
+              <td>{new_array[15].name}</td>
+              <td>{new_array[15].level}</td>
+              <td>{new_array[15].xp}</td>
+              <td>{new_array[15].rank}</td>
+            </tr>
+            <tr>
+              <td>{new_array[16].name}</td>
+              <td>{new_array[16].level}</td>
+              <td>{new_array[16].xp}</td>
+              <td>{new_array[16].rank}</td>
+            </tr>
+            <tr>
+              <td>{new_array[17].name}</td>
+              <td>{new_array[17].level}</td>
+              <td>{new_array[17].xp}</td>
+              <td>{new_array[17].rank}</td>
+            </tr>
+            <tr>
+              <td>{new_array[18].name}</td>
+              <td>{new_array[18].level}</td>
+              <td>{new_array[18].xp}</td>
+              <td>{new_array[18].rank}</td>
+            </tr>
+            <tr>
+              <td>{new_array[19].name}</td>
+              <td>{new_array[19].level}</td>
+              <td>{new_array[19].xp}</td>
+              <td>{new_array[19].rank}</td>
+            </tr>
+            <tr>
+              <td>{new_array[20].name}</td>
+              <td>{new_array[20].level}</td>
+              <td>{new_array[20].xp}</td>
+              <td>{new_array[20].rank}</td>
+            </tr>
+            <tr>
+              <td>{new_array[21].name}</td>
+              <td>{new_array[21].level}</td>
+              <td>{new_array[21].xp}</td>
+              <td>{new_array[21].rank}</td>
+            </tr>
+            <tr>
+              <td>{new_array[22].name}</td>
+              <td>{new_array[22].level}</td>
+              <td>{new_array[22].xp}</td>
+              <td>{new_array[22].rank}</td>
+            </tr>
+            <tr>
+              <td>{new_array[23].name}</td>
+              <td>{new_array[23].level}</td>
+              <td>{new_array[23].xp}</td>
+              <td>{new_array[23].rank}</td>
+            </tr>
+
           </tbody>
         </Table>
       </div>);

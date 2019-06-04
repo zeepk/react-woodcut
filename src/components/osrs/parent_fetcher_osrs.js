@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import FetchStats from "./fetch_osrs_stats";
 import FetchMinigames from "./fetch_osrs_minigames";
-import NameForm from "./NameForm";
+import FetchOsrsUserData from "./fetch_osrs_user_data";
+import NameForm from "../NameForm";
 import Img from 'react-image';
 
 import { Link } from 'react-router-dom'
@@ -31,7 +32,7 @@ export default class parent_fetcher_osrs extends Component {
             <div>
                 <nav id="topnav" className="navbar navbar-expand-lg navbar-dark bg-green">
                     <a className="navbar-brand" href=" ">
-                        <img id="logo" src={require("../woodcutLogo.png")} alt="Site Logo" />
+                        <img id="logo" src={require("../../woodcutLogo.png")} alt="Site Logo" />
                     </a>
                     <button
                         className="navbar-toggler"
@@ -89,7 +90,7 @@ export default class parent_fetcher_osrs extends Component {
                      
 
                             {/* user info component goes here */}
-                            {/* <FetchUserData user={this.state.user} /> */}
+                            <FetchOsrsUserData user={this.state.user} />
                         
                     </div>
                     {/* activity table component goes here */}
