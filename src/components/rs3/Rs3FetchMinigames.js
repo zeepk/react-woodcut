@@ -15,32 +15,19 @@ export default class fetch_stats extends Component {
     this.componentWillUnmount = this.componentWillUnmount.bind(this);
   }
 
-  // state = {
-  //         error: null,
-  //     isLoaded: false,
-  //     items: " "  
-  // }
-  //   shouldComponentUpdate() {
-
-  //     return false; // Will cause component to never re-render.
-  // }
-
 
   componentDidMount() {
     this._isMounted = true;
     console.log("mount called");
 
-    // alert("running fetch");
     console.log("running fetch");
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
     var player_name = " "
-    // alert("Prop received: " + this.props.user)
     player_name = this.props.user.toString();
 
     player_name = player_name.toString();
     player_name = player_name.replace(' ', '+');
     player_name = player_name.replace('_', '+');
-    // alert("The name: " + player_name);
     fetch(
       proxyurl +
       "https://secure.runescape.com/m=hiscore/index_lite.ws?player=" +
@@ -49,7 +36,6 @@ export default class fetch_stats extends Component {
       .then(res => res.text())
       .then(
         result => {
-          // alert("RESULT changing state");
           if (this._isMounted) {
             console.log("RESULT changing state");
             this.setState({
@@ -58,12 +44,9 @@ export default class fetch_stats extends Component {
             });
           }
         },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
+
         error => {
           if (this._isMounted) {
-            // alert("ERROR changing state");
             console.log("ERROR changing state");
             this.setState({
               isLoaded: true,
@@ -74,25 +57,21 @@ export default class fetch_stats extends Component {
 
       );
 
-    const { error, isLoaded, items } = this.state;
-    // console.log(items);
+
   }
 
   componentDidUpdate(prevProps) {
     console.log("update called");
 
     if (prevProps.user !== this.props.user) {
-      // alert("running fetch");
       console.log("running fetch");
       const proxyurl = "https://cors-anywhere.herokuapp.com/";
       var player_name = " "
-      // alert("Prop received: " + this.props.user)
       player_name = this.props.user.toString();
 
       player_name = player_name.toString();
       player_name = player_name.replace(' ', '+');
       player_name = player_name.replace('_', '+');
-      // alert("The name: " + player_name);
       fetch(
         (proxyurl +
           "https://secure.runescape.com/m=hiscore/index_lite.ws?player=" +
@@ -109,9 +88,7 @@ export default class fetch_stats extends Component {
             });
 
           },
-          // Note: it's important to handle errors here
-          // instead of a catch() block so that we don't swallow
-          // exceptions from actual bugs in components.
+
           error => {
 
             console.log("ERROR changing state");
@@ -123,7 +100,6 @@ export default class fetch_stats extends Component {
           }
 
         );
-      const { error, isLoaded, items } = this.state;
 
     }
 
@@ -199,7 +175,6 @@ export default class fetch_stats extends Component {
     ];
     function organize_data(dict, data_array) {
 
-    //   var skills = {};
       var minigames = {};
 
       try {
@@ -213,14 +188,12 @@ export default class fetch_stats extends Component {
           empty_activities[i] = " ";
         }
         console.log("empty stats");
-        // alert("Player not found.");
         return empty_activities;
       }
-      // console.log(dict)
-      var temp_data_array = dict.split("\n");
+      temp_data_array = dict.split("\n");
 
-      for (var i = 28; i < 58; i++) {
-        var individual_skill_array = temp_data_array[i].split(",");
+      for (i = 28; i < 58; i++) {
+        individual_skill_array = temp_data_array[i].split(",");
         var score = individual_skill_array[1];
         if(individual_skill_array[0] === "-1"){
             individual_skill_array[0] = "Not Ranked";
@@ -238,7 +211,6 @@ export default class fetch_stats extends Component {
           rank: individual_skill_array[0],
           score: score
         };
-        // console.log(temp_data_array[1])
       }
       return minigames;
     }

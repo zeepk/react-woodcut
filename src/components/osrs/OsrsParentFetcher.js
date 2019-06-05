@@ -1,15 +1,11 @@
 import React, { Component } from "react";
-import FetchStats from "./fetch_rs3_stats";
-import FetchMinigames from "./fetch_rs3_minigames";
-import FetchActivityLog from "./fetch_activity_log";
-import FetchUserData from "./fetch_user_data";
+import FetchStats from "./OsrsFetchStats";
+import FetchMinigames from "./OsrsFetchMinigames";
+import FetchOsrsUserData from "./OsrsFetchUserData";
 import NameForm from "../NameForm";
-import Img from "react-image";
-import Tabs from "react-bootstrap/Tabs";
-import Tab from "react-bootstrap/Tab";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
-export default class parent_fetcher extends Component {
+export default class parent_fetcher_osrs extends Component {
   constructor(props) {
     super(props);
     this.state = { user: "zee pk" };
@@ -28,7 +24,6 @@ export default class parent_fetcher extends Component {
     username = username.replace("_", " ");
     return username;
   }
-  //testing git
 
   render() {
     return (
@@ -45,7 +40,7 @@ export default class parent_fetcher extends Component {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-              <Nav.Link href="#">RS3</Nav.Link>
+              <Nav.Link href="/">RS3</Nav.Link>
               <Nav.Link href="/osrs">osrs</Nav.Link>
             </Nav>
             {/* search goes here */}
@@ -54,8 +49,6 @@ export default class parent_fetcher extends Component {
               changeName={user => this.setState({ user })}
             />
           </Navbar.Collapse>
-
-          {/* </div> */}
         </Navbar>
 
         {/* <!-- GRID --> */}
@@ -73,34 +66,19 @@ export default class parent_fetcher extends Component {
           {/* player info */}
           <div className="grid-item" id="player-info">
             <div>
-              {/* avatar image */}
-              <Img
-                src={
-                  "http://secure.runescape.com/m=avatar-rs/" +
-                  this.nameWithPluses() +
-                  "/chat.png"
-                }
-              />
-            </div>
-            <div>
               {/* username */}
               <h1 id="username">{this.nameWithSpaces()}</h1>
             </div>
             {/* player grid */}
 
             {/* user info component goes here */}
-            <FetchUserData user={this.state.user} />
+            <FetchOsrsUserData user={this.state.user} />
           </div>
           {/* activity table component goes here */}
           <div className="grid-item">
-            <Tabs defaultActiveKey="activity" id="uncontrolled-tab-example">
-              <Tab eventKey="activity" title="Activity">
-                <FetchActivityLog user={this.state.user} />
-              </Tab>
-              <Tab eventKey="minigames" title="Minigame Stats">
-                <FetchMinigames user={this.state.user} />
-              </Tab>
-            </Tabs>
+            <br />
+            <br />
+            <FetchMinigames user={this.state.user} />
           </div>
         </div>
       </div>

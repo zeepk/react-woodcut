@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Table } from 'react-bootstrap';
 
 export default class fetch_user_data extends Component {
     constructor(props) {
@@ -20,17 +19,15 @@ export default class fetch_user_data extends Component {
         this._isMounted = true;
         console.log("mount called");
 
-        // alert("running fetch");
         console.log("running fetch");
         const proxyurl = "https://cors-anywhere.herokuapp.com/";
         var player_name = " "
-        // alert("Prop received: " + this.props.user)
+
         player_name = this.props.user.toString();
 
         player_name = player_name.toString();
         player_name = player_name.replace(' ', '+');
         player_name = player_name.replace('_', '+');
-        // alert("The name: " + player_name);
         fetch(
             proxyurl +
             "https://secure.runescape.com/m=hiscore/index_lite.ws?player=" +
@@ -39,7 +36,6 @@ export default class fetch_user_data extends Component {
             .then(res => res.text())
             .then(
                 result => {
-                    // alert("RESULT changing state");
                     if (this._isMounted) {
                         console.log("RESULT changing state");
                         this.setState({
@@ -48,12 +44,9 @@ export default class fetch_user_data extends Component {
                         });
                     }
                 },
-                // Note: it's important to handle errors here
-                // instead of a catch() block so that we don't swallow
-                // exceptions from actual bugs in components.
+
                 error => {
                     if (this._isMounted) {
-                        // alert("ERROR changing state");
                         console.log("ERROR changing state");
                         this.setState({
                             isLoaded: true,
@@ -64,25 +57,21 @@ export default class fetch_user_data extends Component {
 
             );
 
-        const { error, isLoaded, items } = this.state;
-        // console.log(items);
+
     }
 
     componentDidUpdate(prevProps) {
         console.log("update called");
 
         if (prevProps.user !== this.props.user) {
-            // alert("running fetch");
             console.log("running fetch");
             const proxyurl = "https://cors-anywhere.herokuapp.com/";
             var player_name = " "
-            // alert("Prop received: " + this.props.user)
             player_name = this.props.user.toString();
 
             player_name = player_name.toString();
             player_name = player_name.replace(' ', '+');
             player_name = player_name.replace('_', '+');
-            // alert("The name: " + player_name);
             fetch(
                 (proxyurl +
                     "https://secure.runescape.com/m=hiscore/index_lite.ws?player=" +
@@ -99,9 +88,7 @@ export default class fetch_user_data extends Component {
                         });
 
                     },
-                    // Note: it's important to handle errors here
-                    // instead of a catch() block so that we don't swallow
-                    // exceptions from actual bugs in components.
+
                     error => {
 
                         console.log("ERROR changing state");
@@ -113,7 +100,6 @@ export default class fetch_user_data extends Component {
                     }
 
                 );
-            const { error, isLoaded, items } = this.state;
 
         }
 
@@ -129,10 +115,13 @@ export default class fetch_user_data extends Component {
 
 
         function organize_data(dict) {
+            /* eslint-disable no-unused-vars */
             try {
                 var temp_data_array = dict.split("\n");
                 var individual_skill_array = temp_data_array[5].split(",");
               }
+              /* eslint-enable no-unused-vars */
+
               catch (error) {
         
                 var empty_activities = {}
@@ -143,14 +132,12 @@ export default class fetch_user_data extends Component {
                 return empty_activities;
               }
             var data = {};
-            //   var minigames = {};
-            // console.log(dict)
-            var temp_data_array = dict.split("\n");
+
+            temp_data_array = dict.split("\n");
 
             var individual_array = temp_data_array[52].split(",");
             var individual_data = individual_array[1];
             individual_data = parseInt(individual_data, 10);
-            // individual_data = individual_data.toLocaleString();
             data[0] = individual_data;
             individual_data = individual_array[0];
             data[1] = individual_data;

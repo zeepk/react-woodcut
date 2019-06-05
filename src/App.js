@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
-import Parent_fetcher from "./components/rs3/parent_fetcher";
-import Parent_fetcher_osrs from "./components/osrs/parent_fetcher_osrs";
+import ParentFetcher from "./components/rs3/Rs3ParentFetcher";
+import ParentFetcherOsrs from "./components/osrs/OsrsParentFetcher";
 import { BrowserRouter as Router, Route  } from 'react-router-dom';
 export default function App() {
 
@@ -17,14 +17,14 @@ export default function App() {
       <Route exact path="/" render={props => (
       <React.Fragment>
       
-      <Parent_fetcher />
+      <ParentFetcher />
 
       </React.Fragment>
 )} />
 <Route path="/OSRS" render={props => (
       <React.Fragment>
       
-      <Parent_fetcher_osrs />
+      <ParentFetcherOsrs />
 
       </React.Fragment>
 )} />

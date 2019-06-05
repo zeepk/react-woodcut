@@ -15,39 +15,26 @@ export default class fetch_activity_log extends Component {
     this.componentWillUnmount = this.componentWillUnmount.bind(this);
   }
 
-  // state = {
-  //         error: null,
-  //     isLoaded: false,
-  //     items: " "  
-  // }
-//   shouldComponentUpdate() {
-    
-//     return false; // Will cause component to never re-render.
-// }
- 
+
 
   componentDidMount() {
     this._isMounted = true;
     console.log("mount called");
     
-    // alert("running fetch");
     console.log("running fetch");
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
     var player_name = " "
-      // alert("Prop received: " + this.props.user)
       player_name = this.props.user.toString();  
     
     player_name = player_name.toString();
     player_name = player_name.replace(' ', '+');
     player_name = player_name.replace('_', '+');
-    // alert("The name: " + player_name);
     fetch(
         proxyurl + "https://apps.runescape.com/runemetrics/profile/profile?user=" + player_name + "&activities=20"
     )
       .then(res => res.json())
       .then(
         result => {
-          // alert("RESULT changing state");
             if(this._isMounted){
           console.log("RESULT changing state");
           this.setState({
@@ -56,12 +43,9 @@ export default class fetch_activity_log extends Component {
           });
         }
         },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
+
         error => {
           if(this._isMounted){
-          // alert("ERROR changing state");
           console.log("ERROR changing state");
           this.setState({
             isLoaded: true,
@@ -72,25 +56,21 @@ export default class fetch_activity_log extends Component {
       
       );
       
-    const { error, isLoaded, items } = this.state;
-    // console.log(items);
+
   }
 
   componentDidUpdate(prevProps) {
     console.log("update called");
     
     if (prevProps.user !== this.props.user) {
-      // alert("running fetch");
     console.log("running fetch");
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
     var player_name = " "
-      // alert("Prop received: " + this.props.user)
       player_name = this.props.user.toString();  
     
     player_name = player_name.toString();
     player_name = player_name.replace(' ', '+');
     player_name = player_name.replace('_', '+');
-    // alert("The name: " + player_name);
     fetch(
       (proxyurl + "https://apps.runescape.com/runemetrics/profile/profile?user=" + player_name + "&activities=20")
     )
@@ -105,9 +85,7 @@ export default class fetch_activity_log extends Component {
           });
 
         },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
+
         error => {
 
           console.log("ERROR changing state");
@@ -119,7 +97,7 @@ export default class fetch_activity_log extends Component {
         }
       
       );
-    const { error, isLoaded, items } = this.state;
+
 
     }
 
@@ -133,70 +111,12 @@ export default class fetch_activity_log extends Component {
 
   render() {
     
-    var data_array = [
-        [0, 'Overall'],
-        [1, 'Attack'],
-        [2, 'Defence'],
-        [3, 'Strength'],
-        [4, 'Constitution'],
-        [5, 'Ranged'],
-        [6, 'Prayer'],
-        [7, 'Magic'],
-        [8, 'Cooking'],
-        [9, 'Woodcutting'],
-        [10, 'Fletching'],
-        [11, 'Fishing'],
-        [12, 'Firemaking'],
-        [13, 'Crafting'],
-        [14, 'Smithing'],
-        [15, 'Mining'],
-        [16, 'Herblore'],
-        [17, 'Agility'],
-        [18, 'Thieving'],
-        [19, 'Slayer'],
-        [20, 'Farming'],
-        [21, 'Runecrafting'],
-        [22, 'Hunter'],
-        [23, 'Construction'],
-        [24, 'Summoning'],
-        [25, 'Dungeoneering'],
-        [26, 'Divination'],
-        [27, 'Invention'],
-        [28, 'Bounty Hunter'],
-        [29, 'BH: Rogue'],
-        [30, 'Dominion Tower'],
-        [31, 'The Crucible'],
-        [32, 'Castle Wars'],
-        [33, 'BA: Attacker'],
-        [34, 'BA: Defender'],
-        [35, 'BA: Collector'],
-        [36, 'BA: Healer'],
-        [37, 'Duel Tournament'],
-        [38, 'Mobilizing Armies'],
-        [39, 'Conquest'],
-        [40, 'Fist of Guthix'],
-        [41, 'GG: Resource Race'],
-        [42, 'GG: Athletics'],
-        [43, 'WE2: Armadyl Lifetime'],
-        [44, 'WE2: Bandos Lifetime'],
-        [45, 'WE2: Armadyl PvP Kills'],
-        [46, 'WE2: Bandos PvP Kills'],
-        [47, 'Heist Guard Level'],
-        [48, 'Heist Robber Level'],
-        [49, 'CFP 5 Game Average'],
-        [50, 'UNK'],
-        [51, 'UNK'],
-        [52, 'Runescore'],
-        [53, 'Easy Clues'],
-        [54, 'Medium Clues'],
-        [55, 'Hard Clues'],
-        [56, 'Elite Clues'],
-        [57, 'Master Clues'],
-    ];
     function get_dates(dict) {
         var dates = {};
         try {
+          /* eslint-disable no-unused-vars */
             var act_text = dict['activities'][11]['text']
+            /* eslint-enable no-unused-vars */
         }
         catch(error) {
             
@@ -219,7 +139,6 @@ export default class fetch_activity_log extends Component {
             var act_text = dict['activities'][11]['text']
         }
         catch(error) {
-            // alert("Player's profile may be set to Private.\nActivity data may be empty.")
             var empty_activities = {}
             for (var i=0; i<20; i++){
                 empty_activities[i] = " ";
@@ -229,8 +148,7 @@ export default class fetch_activity_log extends Component {
         }
 
         for (var j = 0; j < 20; j++) {
-            // console.log(res_dict['activities'][j]['text'])
-            var act_text = dict['activities'][j]['text']
+            act_text = dict['activities'][j]['text']
             var xp_index = act_text.indexOf('XP')
             if (xp_index > 0){
                 var sub_1 = act_text.substring(0,xp_index-6)

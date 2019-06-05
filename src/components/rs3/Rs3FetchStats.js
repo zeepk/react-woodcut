@@ -15,41 +15,26 @@ export default class fetch_stats extends Component {
     this.componentWillUnmount = this.componentWillUnmount.bind(this);
   }
 
-  // state = {
-  //         error: null,
-  //     isLoaded: false,
-  //     items: " "  
-  // }
-  //   shouldComponentUpdate() {
-
-  //     return false; // Will cause component to never re-render.
-  // }
-
-
   componentDidMount() {
     this._isMounted = true;
     console.log("mount called");
 
-    // alert("running fetch");
     console.log("running fetch");
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
     var player_name = " "
-    // alert("Prop received: " + this.props.user)
     player_name = this.props.user.toString();
 
     player_name = player_name.toString();
     player_name = player_name.replace(' ', '+');
     player_name = player_name.replace('_', '+');
-    // alert("The name: " + player_name);
     fetch(
       proxyurl +
-      "https://secure.runescape.com/m=hiscore_oldschool/index_lite.ws?player=" +
+      "https://secure.runescape.com/m=hiscore/index_lite.ws?player=" +
       player_name
     )
       .then(res => res.text())
       .then(
         result => {
-          // alert("RESULT changing state");
           if (this._isMounted) {
             console.log("RESULT changing state");
             this.setState({
@@ -58,12 +43,9 @@ export default class fetch_stats extends Component {
             });
           }
         },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
+
         error => {
           if (this._isMounted) {
-            // alert("ERROR changing state");
             console.log("ERROR changing state");
             this.setState({
               isLoaded: true,
@@ -74,28 +56,24 @@ export default class fetch_stats extends Component {
 
       );
 
-    const { error, isLoaded, items } = this.state;
-    // console.log(items);
   }
 
   componentDidUpdate(prevProps) {
     console.log("update called");
 
     if (prevProps.user !== this.props.user) {
-      // alert("running fetch");
+
       console.log("running fetch");
       const proxyurl = "https://cors-anywhere.herokuapp.com/";
       var player_name = " "
-      // alert("Prop received: " + this.props.user)
       player_name = this.props.user.toString();
 
       player_name = player_name.toString();
       player_name = player_name.replace(' ', '+');
       player_name = player_name.replace('_', '+');
-      // alert("The name: " + player_name);
       fetch(
         (proxyurl +
-          "https://secure.runescape.com/m=hiscore_oldschool/index_lite.ws?player=" +
+          "https://secure.runescape.com/m=hiscore/index_lite.ws?player=" +
           player_name)
       )
         .then(res => res.text())
@@ -109,9 +87,7 @@ export default class fetch_stats extends Component {
             });
 
           },
-          // Note: it's important to handle errors here
-          // instead of a catch() block so that we don't swallow
-          // exceptions from actual bugs in components.
+
           error => {
 
             console.log("ERROR changing state");
@@ -123,7 +99,6 @@ export default class fetch_stats extends Component {
           }
 
         );
-      const { error, isLoaded, items } = this.state;
 
     }
 
@@ -137,45 +112,70 @@ export default class fetch_stats extends Component {
 
   render() {
 
-    var os_data_array= [
-        [0, 'Overall'],
-        [1, 'Attack'],
-        [2, 'Defence'],
-        [3, 'Strength'],
-        [4, 'Hitpoints'],
-        [5, 'Ranged'],
-        [6, 'Prayer'],
-        [7, 'Magic'],
-        [8, 'Cooking'],
-        [9, 'Woodcutting'],
-        [10, 'Fletching'],
-        [11, 'Fishing'],
-        [12, 'Firemaking'],
-        [13, 'Crafting'],
-        [14, 'Smithing'],
-        [15, 'Mining'],
-        [16, 'Herblore'],
-        [17, 'Agility'],
-        [18, 'Thieving'],
-        [19, 'Slayer'],
-        [20, 'Farming'],
-        [21, 'Runecrafting'],
-        [22, 'Hunter'],
-        [23, 'Construction'],
-        [24, 'BH Hunter'],
-        [25, 'BH Rogues'],
-        [26, 'Total Clues'],
-        [27, 'Easy Clues'],
-        [28, 'Medium Clues'],
-        [29, 'Hard Clues'],
-        [30, 'Elite Clues'],
-        [31, 'Master Clues'],
-        [32, 'LMS Rank'],
-      ];
-    function organize_stat_data(dict, os_data_array) {
+    var data_array = [
+      [0, 'Overall'],
+      [1, 'Attack'],
+      [2, 'Defence'],
+      [3, 'Strength'],
+      [4, 'Constitution'],
+      [5, 'Ranged'],
+      [6, 'Prayer'],
+      [7, 'Magic'],
+      [8, 'Cooking'],
+      [9, 'Woodcutting'],
+      [10, 'Fletching'],
+      [11, 'Fishing'],
+      [12, 'Firemaking'],
+      [13, 'Crafting'],
+      [14, 'Smithing'],
+      [15, 'Mining'],
+      [16, 'Herblore'],
+      [17, 'Agility'],
+      [18, 'Thieving'],
+      [19, 'Slayer'],
+      [20, 'Farming'],
+      [21, 'Runecrafting'],
+      [22, 'Hunter'],
+      [23, 'Construction'],
+      [24, 'Summoning'],
+      [25, 'Dungeoneering'],
+      [26, 'Divination'],
+      [27, 'Invention'],
+      [28, 'Bounty Hunter'],
+      [29, 'BH: Rogue'],
+      [30, 'Dominion Tower'],
+      [31, 'The Crucible'],
+      [32, 'Castle Wars'],
+      [33, 'BA: Attacker'],
+      [34, 'BA: Defender'],
+      [35, 'BA: Collector'],
+      [36, 'BA: Healer'],
+      [37, 'Duel Tournament'],
+      [38, 'Mobilizing Armies'],
+      [39, 'Conquest'],
+      [40, 'Fist of Guthix'],
+      [41, 'GG: Resource Race'],
+      [42, 'GG: Athletics'],
+      [43, 'WE2: Armadyl Lifetime'],
+      [44, 'WE2: Bandos Lifetime'],
+      [45, 'WE2: Armadyl PvP Kills'],
+      [46, 'WE2: Bandos PvP Kills'],
+      [47, 'Heist Guard Level'],
+      [48, 'Heist Robber Level'],
+      [49, 'CFP 5 Game Average'],
+      [50, 'UNK'],
+      [51, 'UNK'],
+      [52, 'Runescore'],
+      [53, 'Easy Clues'],
+      [54, 'Medium Clues'],
+      [55, 'Hard Clues'],
+      [56, 'Elite Clues'],
+      [57, 'Master Clues'],
+    ];
+    function organize_data(dict, data_array) {
 
       var skills = {};
-      
+
 
       try {
         var temp_data_array = dict.split("\n");
@@ -184,39 +184,35 @@ export default class fetch_stats extends Component {
       catch (error) {
 
         var empty_activities = {}
-        for (var i = 0; i < 24; i++) {
+        for (var i = 0; i < 28; i++) {
           empty_activities[i] = " ";
         }
         console.log("empty stats");
-        // alert("Player not found.");
         return empty_activities;
       }
-      // console.log(dict)
-      var temp_data_array = dict.split("\n");
+      temp_data_array = dict.split("\n");
 
-      for (var i = 0; i < 24; i++) {
-        var individual_skill_array = temp_data_array[i].split(",");
+      for (i = 0; i < 28; i++) {
+        individual_skill_array = temp_data_array[i].split(",");
         var xp = individual_skill_array[2];
         xp = parseInt(xp, 10);
         skills[i] = {
           id: i,
-          name: os_data_array[i][1],
+          name: data_array[i][1],
           rank: individual_skill_array[0],
           level: individual_skill_array[1],
           xp: xp.toLocaleString("en")
         };
-        // console.log(temp_data_array[1])
       }
       return skills;
     }
-    
     var { error, isLoaded, items } = this.state;
     if (error) {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
       return <div><img src={require("../loading.gif")} alt="loading screen" /></div>;
     } else {
-      var new_array = organize_stat_data(items, os_data_array)
+      var new_array = organize_data(items, data_array)
       return (<div>
         <Table striped id="stat-table">
           <thead className="table-primary">
@@ -372,7 +368,30 @@ export default class fetch_stats extends Component {
               <td>{new_array[23].xp}</td>
               <td>{new_array[23].rank}</td>
             </tr>
-
+            <tr>
+              <td>{new_array[24].name}</td>
+              <td>{new_array[24].level}</td>
+              <td>{new_array[24].xp}</td>
+              <td>{new_array[24].rank}</td>
+            </tr>
+            <tr>
+              <td>{new_array[25].name}</td>
+              <td>{new_array[25].level}</td>
+              <td>{new_array[25].xp}</td>
+              <td>{new_array[25].rank}</td>
+            </tr>
+            <tr>
+              <td>{new_array[26].name}</td>
+              <td>{new_array[26].level}</td>
+              <td>{new_array[26].xp}</td>
+              <td>{new_array[26].rank}</td>
+            </tr>
+            <tr>
+              <td>{new_array[27].name}</td>
+              <td>{new_array[27].level}</td>
+              <td>{new_array[27].xp}</td>
+              <td>{new_array[27].rank}</td>
+            </tr>
           </tbody>
         </Table>
       </div>);
