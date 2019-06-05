@@ -55,7 +55,6 @@
   padding-bottom: 20px;
 }
 
-
 .icon,
 #runescore,
 #total-xp {
@@ -77,6 +76,7 @@
 
 #topnav {
   padding-right: 5%;
+  background-color: #222;
 }
 
 #logo {

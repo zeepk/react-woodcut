@@ -8,6 +8,7 @@ import Img from 'react-image';
 import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
 import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
 import { Link } from 'react-router-dom'
 export default class parent_fetcher extends Component {
     constructor(props) {
@@ -33,39 +34,26 @@ export default class parent_fetcher extends Component {
     render() {
         return (
             <div>
-                <nav id="topnav" className="navbar navbar-expand-lg navbar-dark bg-green">
+                <Navbar id="topnav" expand="lg">
                     <a className="navbar-brand" href=" ">
                         <img id="logo" src={require("../../woodcutLogo.png")} alt="Site Logo" />
                     </a>
-                    {/* <button
-                        className="navbar-toggler"
-                        type="button"
-                        data-toggle="collapse"
-                        data-target="#navbarColor01"
-                        aria-controls="navbarColor01"
-                        aria-expanded="false"
-                        aria-label="Toggle navigation"
-                    >
-                        <span className="navbar-toggler-icon" />
-                    </button> */}
 
-                    {/* <div className="collapse navbar-collapse" id="navbarColor01"> */}
-                        <ul className="navbar-nav mr-auto">
-                            <li className="nav-item active">
-                                <Link to="/">rs3</Link>
-                            </li>
-                            
-                            <li className="nav-item">
-                                <Link to="/osrs">osrs</Link>
-                            </li>
-                        </ul>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse id="basic-navbar-nav">
+                    <Nav className="mr-auto">
+                    <Nav.Link href="#">RS3</Nav.Link>
+                    <Nav.Link href="/osrs">osrs</Nav.Link>
 
+                        </Nav>
                         {/* search goes here */}
                         <NameForm user={this.state.user} changeName={(user) => this.setState({ user })} />
+                    </Navbar.Collapse>
+
 
 
                     {/* </div> */}
-                </nav>
+                </Navbar>
 
                 {/* <!-- GRID --> */}
 
