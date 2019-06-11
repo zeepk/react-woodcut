@@ -12,7 +12,7 @@ import Nav from "react-bootstrap/Nav";
 export default class parent_fetcher extends Component {
   constructor(props) {
     super(props);
-    this.state = { user: "zee pk" };
+    this.state = { user: "zezima" };
     this.render = this.render.bind(this);
     this.username = this.state.user.replace(" ", "+");
   }
@@ -50,7 +50,7 @@ export default class parent_fetcher extends Component {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
               <Nav.Link href="#">RS3</Nav.Link>
-              <Nav.Link href="/osrs">osrs</Nav.Link>
+              <Nav.Link href="/osrs">OSRS</Nav.Link>
             </Nav>
             {/* search goes here */}
             <NameForm

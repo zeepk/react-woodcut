@@ -83,6 +83,9 @@
 #logo {
   max-height: 70px;
 }
+#basic-navbar-nav {
+  text-align: right;
+}
 /* .App {
   text-align: center;
 }
