@@ -17,6 +17,8 @@ export default class parent_fetcher extends Component {
     this.username = this.state.user.replace(" ", "+");
   }
 
+
+
   nameWithPluses() {
     var username = this.state.user.replace(" ", "+");
     username = username.replace("_", "+");
@@ -31,7 +33,9 @@ export default class parent_fetcher extends Component {
 
 
   render() {
+    
     return (
+      
       <div>
         <Navbar id="topnav" expand="lg">
           <a className="navbar-brand" href=" ">
@@ -92,7 +96,7 @@ export default class parent_fetcher extends Component {
             <FetchUserData user={this.state.user} />
           </div>
           {/* activity table component goes here */}
-          <div className="grid-item">
+          <div className="grid-item" id="align-right">
             <Tabs defaultActiveKey="activity" id="uncontrolled-tab-example">
               <Tab eventKey="activity" title="Activity">
                 <FetchActivityLog user={this.state.user} />
