@@ -68,7 +68,7 @@ export default class fetch_osrs_user_data extends Component {
       player_name = player_name.replace("_", "+");
       fetch(
         proxyurl +
-          "https://secure.runescape.com/m=hiscore/index_lite.ws?player=" +
+          "https://secure.runescape.com/m=hiscore_oldschool/index_lite.ws?player=" +
           player_name
       )
         .then(res => res.text())
