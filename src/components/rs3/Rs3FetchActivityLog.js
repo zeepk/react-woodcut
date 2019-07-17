@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Table } from 'react-bootstrap';
+import Table from 'react-bootstrap/Table';
+
 
 export default class fetch_activity_log extends Component {
   constructor(props) {
