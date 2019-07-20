@@ -15,7 +15,39 @@ export default class parent_fetcher extends Component {
     this.state = { user: "zezima" };
     this.render = this.render.bind(this);
     this.username = this.state.user.replace(" ", "+");
+    // this.componentDidUpdate = this.componentDidUpdate.bind(this);
+    // this.componentDidMount = this.componentDidMount.bind(this);
+    // this.shouldComponentUpdate = this.shouldComponentUpdate.bind(this);
+
+
   }
+  // componentDidMount(){
+  //   //create loading
+  //   if(this.mytest) {
+  //     this.mytest.innerHTML = "didmount";
+  //  }
+    
+
+  // }
+  // componentDidUpdate(){
+  //   //create loading
+  //   if(this.mytest) {
+  //     this.mytest.innerHTML = "didupdate";
+  //  }
+
+
+    
+
+  // }
+  // shouldComponentUpdate(){
+  //   //create loading
+  //   if(this.mytest) {
+  //     this.mytest.innerHTML = "should i update";
+  //     return true;
+  //  }
+    
+
+  // }
 
 
 
@@ -33,8 +65,10 @@ export default class parent_fetcher extends Component {
 
 
   render() {
+
     
     return (
+
       
       <div>
         <Navbar id="topnav" expand="lg">
@@ -61,7 +95,6 @@ export default class parent_fetcher extends Component {
 
 
         </Navbar>
-
         {/* <!-- GRID --> */}
 
         <div className="grid-container">
