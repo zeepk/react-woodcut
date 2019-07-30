@@ -7,23 +7,126 @@ export default class fetch_stats extends Component {
     this.state = {
       error: null,
       isLoaded: false,
-      items: " "
+      items: " ",
+      user: this.props.user
 
     };
-    this.componentDidMount = this.componentDidMount.bind(this);
-    this.componentDidUpdate = this.componentDidUpdate.bind(this);
-    this.componentWillUnmount = this.componentWillUnmount.bind(this);
+    // this.componentDidMount = this.componentDidMount.bind(this);
+    // this.componentDidUpdate = this.componentDidUpdate.bind(this);
+    // this.componentWillUnmount = this.componentWillUnmount.bind(this);
+    
   }
+  
+//   componentDidMount() {
+//     this._isMounted = true;
+//     console.log("mount called");
 
-  componentDidMount() {
-    this._isMounted = true;
+//     console.log("running fetch");
+//     const proxyurl = "https://cors-anywhere.herokuapp.com/";
+//     var player_name = " "
+//     player_name = this.props.user.toString();
+
+//     player_name = player_name.toString();
+//     player_name = player_name.replace(' ', '+');
+//     player_name = player_name.replace('_', '+');
+//     fetch(
+//       proxyurl +
+//       "https://secure.runescape.com/m=hiscore/index_lite.ws?player=" +
+//       player_name
+//     )
+//       .then(res => res.text())
+//       .then(
+//         result => {
+//           if (this._isMounted) {
+//             console.log("RESULT changing state");
+//             this.setState({
+//               isLoaded: true,
+//               items: result
+//             });
+//             this.sendData(true);
+//           }
+//         },
+
+//         error => {
+//           if (this._isMounted) {
+//             console.log("ERROR changing state");
+//             this.setState({
+//               isLoaded: true,
+//               error
+//             });
+//           }
+//         }
+
+//       );
+
+//   }
+
+//   sendData = (data_to_send) => {
+//     this.props.parentCallback(data_to_send);
+// }
+
+//   componentDidUpdate(prevProps) {
+//     console.log("update called");
+//     console.log("---------LOADED: " + this.state.isLoaded);
+
+//     if (prevProps.user !== this.props.user) {
+
+//       console.log("running fetch");
+//       const proxyurl = "https://cors-anywhere.herokuapp.com/";
+//       var player_name = " "
+//       player_name = this.props.user.toString();
+
+//       player_name = player_name.toString();
+//       player_name = player_name.replace(' ', '+');
+//       player_name = player_name.replace('_', '+');
+//       fetch(
+//         (proxyurl +
+//           "https://secure.runescape.com/m=hiscore/index_lite.ws?player=" +
+//           player_name)
+//       )
+//         .then(res => res.text())
+//         .then(
+//           result => {
+
+//             console.log("RESULT changing state");
+//             this.setState({
+//               isLoaded: true,
+//               items: result
+//             });
+//             this.sendData(true);
+
+//           },
+
+//           error => {
+
+//             console.log("ERROR changing state");
+//             this.setState({
+//               isLoaded: true,
+//               error
+//             });
+
+//           }
+
+//         );
+
+//     }
+
+//   }
+//   componentWillUnmount() {
+//     console.log("unmounted")
+//     this._isMounted = false;
+//   }
+
+
+
+  render() {
     console.log("mount called");
 
     console.log("running fetch");
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
     var player_name = " "
     player_name = this.props.user.toString();
-
+    
     player_name = player_name.toString();
     player_name = player_name.replace(' ', '+');
     player_name = player_name.replace('_', '+');
@@ -35,82 +138,23 @@ export default class fetch_stats extends Component {
       .then(res => res.text())
       .then(
         result => {
-          if (this._isMounted) {
             console.log("RESULT changing state");
             this.setState({
               isLoaded: true,
               items: result
-            });
-          }
+            });          
         },
 
         error => {
-          if (this._isMounted) {
             console.log("ERROR changing state");
             this.setState({
               isLoaded: true,
               error
             });
-          }
+          
         }
 
       );
-
-  }
-
-  componentDidUpdate(prevProps) {
-    console.log("update called");
-
-    if (prevProps.user !== this.props.user) {
-
-      console.log("running fetch");
-      const proxyurl = "https://cors-anywhere.herokuapp.com/";
-      var player_name = " "
-      player_name = this.props.user.toString();
-
-      player_name = player_name.toString();
-      player_name = player_name.replace(' ', '+');
-      player_name = player_name.replace('_', '+');
-      fetch(
-        (proxyurl +
-          "https://secure.runescape.com/m=hiscore/index_lite.ws?player=" +
-          player_name)
-      )
-        .then(res => res.text())
-        .then(
-          result => {
-
-            console.log("RESULT changing state");
-            this.setState({
-              isLoaded: true,
-              items: result
-            });
-
-          },
-
-          error => {
-
-            console.log("ERROR changing state");
-            this.setState({
-              isLoaded: true,
-              error
-            });
-
-          }
-
-        );
-
-    }
-
-  }
-  componentWillUnmount() {
-    console.log("unmounted")
-    this._isMounted = false;
-  }
-
-
-
-  render() {
 
     var data_array = [
       [0, 'Overall'],

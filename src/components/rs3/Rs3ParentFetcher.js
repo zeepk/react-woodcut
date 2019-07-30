@@ -12,7 +12,8 @@ import Nav from "react-bootstrap/Nav";
 export default class parent_fetcher extends Component {
   constructor(props) {
     super(props);
-    this.state = { user: "zezima" };
+    this.state = { user: "zezima",
+                    child_loaded: true };
     this.render = this.render.bind(this);
     this.username = this.state.user.replace(" ", "+");
     // this.componentDidUpdate = this.componentDidUpdate.bind(this);
@@ -20,6 +21,9 @@ export default class parent_fetcher extends Component {
     // this.shouldComponentUpdate = this.shouldComponentUpdate.bind(this);
 
 
+  }
+  callbackFunction = (childData) => {
+    this.setState({child_loaded: childData})
   }
   // componentDidMount(){
   //   //create loading
@@ -65,10 +69,14 @@ export default class parent_fetcher extends Component {
 
 
   render() {
-
+    if (this.state.child_loaded === false){
+      return (
+        <h1>test</h1>
+      )
+    }
+else {
     
     return (
-
       
       <div>
         <Navbar id="topnav" expand="lg">
@@ -104,7 +112,7 @@ export default class parent_fetcher extends Component {
             {/* stat table component goes here */}
             <br />
             <br />
-            <FetchStats user={this.state.user} />
+            <FetchStats user={this.state.user} parentCallback = {this.callbackFunction}/>
           </div>
 
           {/* player info */}
@@ -117,10 +125,11 @@ export default class parent_fetcher extends Component {
                   this.nameWithPluses() +
                   "/chat.png"
                 }
-              />
+                />
             </div>
             <div>
               {/* username */}
+
               <h1 id="username">{this.nameWithSpaces()}</h1>
             </div>
             {/* player grid */}
@@ -143,4 +152,5 @@ export default class parent_fetcher extends Component {
       </div>
     );
   }
+}
 }
