@@ -1,181 +1,22 @@
 import React, { Component } from "react";
 import Table from 'react-bootstrap/Table';
 
-export default class fetch_stats extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      error: null,
-      isLoaded: false,
-      items: " "
-    };
-    this.componentDidMount = this.componentDidMount.bind(this);
-    this.componentDidUpdate = this.componentDidUpdate.bind(this);
-    this.componentWillUnmount = this.componentWillUnmount.bind(this);
+function Osrs_fetch_stats (props) {
+  var new_array = {};
+  if(props.stats_array[1]){
+    new_array = props.stats_array;
   }
-
-  componentDidMount() {
-    this._isMounted = true;
-    console.log("mount called");
-
-    console.log("running fetch");
-    const proxyurl = "https://cors-anywhere.herokuapp.com/";
-    var player_name = " ";
-    player_name = this.props.user.toString();
-
-    player_name = player_name.toString();
-    player_name = player_name.replace(" ", "+");
-    player_name = player_name.replace("_", "+");
-    fetch(
-      proxyurl +
-        "https://secure.runescape.com/m=hiscore_oldschool/index_lite.ws?player=" +
-        player_name
-    )
-      .then(res => res.text())
-      .then(
-        result => {
-          if (this._isMounted) {
-            console.log("RESULT changing state");
-            this.setState({
-              isLoaded: true,
-              items: result
-            });
-          }
-        },
-
-        error => {
-          if (this._isMounted) {
-            console.log("ERROR changing state");
-            this.setState({
-              isLoaded: true,
-              error
-            });
-          }
-        }
-      );
-  }
-
-  componentDidUpdate(prevProps) {
-    console.log("update called");
-
-    if (prevProps.user !== this.props.user) {
-      console.log("running fetch");
-      const proxyurl = "https://cors-anywhere.herokuapp.com/";
-      var player_name = " ";
-      player_name = this.props.user.toString();
-
-      player_name = player_name.toString();
-      player_name = player_name.replace(" ", "+");
-      player_name = player_name.replace("_", "+");
-      fetch(
-        proxyurl +
-          "https://secure.runescape.com/m=hiscore_oldschool/index_lite.ws?player=" +
-          player_name
-      )
-        .then(res => res.text())
-        .then(
-          result => {
-            console.log("RESULT changing state");
-            this.setState({
-              isLoaded: true,
-              items: result
-            });
-          },
-
-          error => {
-            console.log("ERROR changing state");
-            this.setState({
-              isLoaded: true,
-              error
-            });
-          }
-        );
+  else{
+    var new_obj = {
+      name: " ",
+      level: " ",
+      xp: " ",
+      rank: " "
+    }
+    for(var i=0; i<24; i++){
+      new_array[i] = new_obj;
     }
   }
-  componentWillUnmount() {
-    console.log("unmounted");
-    this._isMounted = false;
-  }
-
-  render() {
-    var os_data_array = [
-      [0, "Overall"],
-      [1, "Attack"],
-      [2, "Defence"],
-      [3, "Strength"],
-      [4, "Hitpoints"],
-      [5, "Ranged"],
-      [6, "Prayer"],
-      [7, "Magic"],
-      [8, "Cooking"],
-      [9, "Woodcutting"],
-      [10, "Fletching"],
-      [11, "Fishing"],
-      [12, "Firemaking"],
-      [13, "Crafting"],
-      [14, "Smithing"],
-      [15, "Mining"],
-      [16, "Herblore"],
-      [17, "Agility"],
-      [18, "Thieving"],
-      [19, "Slayer"],
-      [20, "Farming"],
-      [21, "Runecrafting"],
-      [22, "Hunter"],
-      [23, "Construction"],
-      [24, "BH Hunter"],
-      [25, "BH Rogues"],
-      [26, "Total Clues"],
-      [27, "Easy Clues"],
-      [28, "Medium Clues"],
-      [29, "Hard Clues"],
-      [30, "Elite Clues"],
-      [31, "Master Clues"],
-      [32, "LMS Rank"]
-    ];
-    function organize_stat_data(dict, os_data_array) {
-      var skills = {};
-
-      try {
-        var temp_data_array = dict.split("\n");
-        var individual_skill_array = temp_data_array[5].split(",");
-      } catch (error) {
-        var empty_activities = {};
-        for (var i = 0; i < 24; i++) {
-          empty_activities[i] = " ";
-        }
-        console.log("empty stats");
-        return empty_activities;
-      }
-      // console.log(dict)
-      temp_data_array = dict.split("\n");
-
-      for (i = 0; i < 24; i++) {
-        individual_skill_array = temp_data_array[i].split(",");
-        var xp = individual_skill_array[2];
-        xp = parseInt(xp, 10);
-        skills[i] = {
-          id: i,
-          name: os_data_array[i][1],
-          rank: individual_skill_array[0],
-          level: individual_skill_array[1],
-          xp: xp.toLocaleString("en")
-        };
-      }
-      return skills;
-    }
-
-    var { error, isLoaded, items } = this.state;
-    if (error) {
-      return <div>Error: {error.message}</div>;
-    } else if (!isLoaded) {
-      return (
-        <div>
-          <img src={require("../loading.gif")} alt="loading screen" />
-        </div>
-      );
-    } else {
-      var new_array = organize_stat_data(items, os_data_array);
       return (
         <div>
           <Table striped id="stat-table">
@@ -337,5 +178,5 @@ export default class fetch_stats extends Component {
         </div>
       );
     }
-  }
-}
+    export default Osrs_fetch_stats;
+
