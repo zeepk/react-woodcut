@@ -296,24 +296,24 @@ export default class parent_fetcher extends Component {
     organize_log_data(this.state.log);
     get_dates(this.state.log);
 
-    if (!skills[1] || !activities[0]){
-    // if (false){
+    // if (!skills[1] || !activities[0]){
+    // // if (false){
 
-      return(
-        <div>
-          <Nameform version='rs3'/>
-          <div className="grid-container">
-          <div className="grid-item" ></div>
-          <div className="grid-item" ><img id="loading" src={require('../loading.gif')} alt="Site Logo" /></div>
-          <div className="grid-item" ></div>
-          </div>
+    //   return(
+    //     <div>
+    //       <Nameform version='rs3'/>
+    //       <div className="grid-container">
+    //       <div className="grid-item" ></div>
+    //       <div className="grid-item" ><img id="loading" src={require('../loading.gif')} alt="Site Logo" /></div>
+    //       <div className="grid-item" ></div>
+    //       </div>
           
 
 
-        </div>
-      )
-    }
-    else{
+    //     </div>
+    //   )
+    // }
+    // else{
     return (
       <div>
         <Nameform version='rs3'/>
@@ -363,4 +363,4 @@ export default class parent_fetcher extends Component {
       </div>
     )};
   }
-}
+

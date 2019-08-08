@@ -11,13 +11,13 @@ class Rs3Home extends Component {
         <Jumbotron>
           <h1>runescape 3</h1>
           <p>
-            welcome to woodcut
+            use the search bar in the top right
           </p>
           <p>
-              things are still kinda in the works here... but feel free to test things out!
+              more info coming here soon...
               
           </p>
-              <p>ideas are welcome, RSN: zee pk</p>
+
 
         </Jumbotron>
       </div>

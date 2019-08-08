@@ -258,6 +258,7 @@ export default class parent_fetcher_osrs extends Component {
 
           {/* player info */}
           <div className="grid-item" id="player-info">
+            
             <div>
               {/* username */}
               <h1 id="username">{this.nameWithSpaces()}</h1>

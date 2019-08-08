@@ -11,13 +11,13 @@ class OsrsHome extends Component {
         <Jumbotron>
           <h1>Osrs</h1>
           <p>
-            welcome to woodcut
+            use the search bar in the top right
           </p>
           <p>
-              things are still kinda in the works here... but feel free to test things out!
+              dashboard info coming soon...
               
           </p>
-              <p>ideas are welcome, RSN: zee pk</p>
+
 
         </Jumbotron>
       </div>
