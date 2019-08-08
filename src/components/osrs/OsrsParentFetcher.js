@@ -99,7 +99,12 @@ export default class parent_fetcher_osrs extends Component {
     var minigames = {};
 
     var data = {};
-
+    function remove_negatives(neg) {
+      if (neg < 0 || neg === "-1"){
+        neg = 0;
+      }
+      return neg;
+    }
     function organize_stat_data(dict, os_data_array) {
 
 
@@ -119,10 +124,12 @@ export default class parent_fetcher_osrs extends Component {
 
       for (i = 0; i < 24; i++) {
         individual_skill_array = temp_data_array[i].split(",");
+        individual_skill_array[1] = remove_negatives(individual_skill_array[1])
+        individual_skill_array[2] = remove_negatives(individual_skill_array[2])
         var xp = individual_skill_array[2];
         xp = parseInt(xp, 10);
         if (individual_skill_array[0] < 0){
-          individual_skill_array[0] = 0;
+          individual_skill_array[0] = "Not Ranked";
         }
         skills[i] = {
           id: i,

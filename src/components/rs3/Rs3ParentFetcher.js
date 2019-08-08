@@ -76,7 +76,7 @@ export default class parent_fetcher extends Component {
         
         
         error => {console.log("profile private");}
-      );
+      )
   }
   render() {
     var data_array = [
@@ -174,6 +174,12 @@ export default class parent_fetcher extends Component {
       individual_data = individual_array[0];
       data[3] = individual_data;
     }
+    function remove_negatives(neg) {
+      if (neg < 0 || neg === "-1"){
+        neg = 0;
+      }
+      return neg;
+    }
 
     function organize_data(dict, data_array) {
       try {
@@ -190,10 +196,12 @@ export default class parent_fetcher extends Component {
 
       for (i = 0; i < 28; i++) {
         individual_skill_array = temp_data_array[i].split(",");
+        individual_skill_array[1] = remove_negatives(individual_skill_array[1])
+        individual_skill_array[2] = remove_negatives(individual_skill_array[2])
         var xp = individual_skill_array[2];
         xp = parseInt(xp, 10);
-        if (individual_skill_array[0] < 0){
-          individual_skill_array[0] = 0;
+        if (individual_skill_array[0] === "-1"){
+          individual_skill_array[0] = "Not Ranked";
         }
         skills[i] = {
           id: i,
@@ -209,6 +217,7 @@ export default class parent_fetcher extends Component {
         if (individual_skill_array[0] === "-1") {
           individual_skill_array[0] = "Not Ranked";
         }
+
         if (score === "-1") {
           score = " ";
         } else {
@@ -276,6 +285,18 @@ export default class parent_fetcher extends Component {
     organize_log_data(this.state.log);
     get_dates(this.state.log);
 
+    // if (!skills[1] || !activities[2]){
+    if (true){
+      return(
+        <div>
+          <Nameform version='rs3'/>
+          <img id="loading" src={require('../loading.gif')} alt="Site Logo" />
+          <p>loading</p>
+
+        </div>
+      )
+    }
+    else{
     return (
       <div>
         <Nameform version='rs3'/>
@@ -323,6 +344,6 @@ export default class parent_fetcher extends Component {
           </div>
         </div>
       </div>
-    );
+    )};
   }
 }

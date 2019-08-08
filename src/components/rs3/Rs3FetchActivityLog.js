@@ -9,8 +9,8 @@ function Fetch_activity_log(props) {
   }
   else{
     for(var i=0; i<20; i++){
-      new_array[i] = "empty";
-      date_array[i] = "empty";
+      new_array[i] = " ";
+      date_array[i] = " ";
     }
   }
 
