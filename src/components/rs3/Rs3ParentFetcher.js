@@ -254,27 +254,38 @@ export default class parent_fetcher extends Component {
 
     function organize_log_data(dict) {
       try {
-        var act_text = dict["activities"][11]["text"];
+        var test = dict;
       } catch (error) {
         console.log("error log")
         var empty_activities = {};
-        empty_activities[0] = "Player's RuneMetrics profile is set to private. No activity will be displayed.";
-        for (var i = 1; i < 20; i++) {
-          empty_activities[i] = " ";
-        }
-        activities = empty_activities;
+        // empty_activities[0] = "Player's RuneMetrics profile is set to private. No activity will be displayed.";
+        // for (var i = 1; i < 20; i++) {
+        //   empty_activities[i] = " ";
+        // }
+        // activities = empty_activities;
         return;
       }
-
-      for (var j = 0; j < 20; j++) {
-        act_text = dict["activities"][j]["text"];
-        var xp_index = act_text.indexOf("XP");
-        if (xp_index > 0) {
-          var sub_1 = act_text.substring(0, xp_index - 6);
-          var sub_2 = act_text.substring(xp_index + 2, act_text.length);
-          act_text = sub_1 + "m XP" + sub_2;
+      if(!dict["activities"]){
+        if (dict["error"] === 'PROFILE_PRIVATE'){
+        activities[0] = "Player's RuneMetrics profile is set to private. No activity will be displayed.";
+        for (var i = 1; i < 20; i++) {
+            activities[i] = " ";
+          }
         }
-        activities[j] = act_text;
+      }
+      else{
+        var act_text;
+        for (var j = 0; j < 20; j++) {
+          act_text = dict["activities"][j]["text"];
+          var xp_index = act_text.indexOf("XP");
+          if (xp_index > 0) {
+            var sub_1 = act_text.substring(0, xp_index - 6);
+            var sub_2 = act_text.substring(xp_index + 2, act_text.length);
+            act_text = sub_1 + "m XP" + sub_2;
+          }
+          activities[j] = act_text;
+        }
+
       }
     }
 
@@ -285,13 +296,19 @@ export default class parent_fetcher extends Component {
     organize_log_data(this.state.log);
     get_dates(this.state.log);
 
-    // if (!skills[1] || !activities[2]){
-    if (true){
+    if (!skills[1] || !activities[0]){
+    // if (false){
+
       return(
         <div>
           <Nameform version='rs3'/>
-          <img id="loading" src={require('../loading.gif')} alt="Site Logo" />
-          <p>loading</p>
+          <div className="grid-container">
+          <div className="grid-item" ></div>
+          <div className="grid-item" ><img id="loading" src={require('../loading.gif')} alt="Site Logo" /></div>
+          <div className="grid-item" ></div>
+          </div>
+          
+
 
         </div>
       )

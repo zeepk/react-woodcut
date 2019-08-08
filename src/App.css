@@ -81,7 +81,7 @@
 }
 
 #loading {
-  visibility: hidden;
+  /* visibility: hidden; */
   position: absolute;
 }
 

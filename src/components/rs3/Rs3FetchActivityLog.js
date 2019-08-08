@@ -2,8 +2,11 @@ import React from "react";
 import Table from "react-bootstrap/Table";
 
 function Fetch_activity_log(props) {
-  var new_array, date_array = {};
-  if(props.activities[1]){
+  var new_array = {}; 
+  var date_array = {};
+  
+
+  if(props.activities[0]){
     new_array = props.activities;
     date_array = props.dates;
   }
