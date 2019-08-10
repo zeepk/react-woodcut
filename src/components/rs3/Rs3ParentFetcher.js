@@ -158,7 +158,7 @@ export default class parent_fetcher extends Component {
         return empty_activities;
       }
       // dict = JSON.stringify(data);
-      var temp_data_array = dict.split("\n");
+      // var temp_data_array = dict.split("\n");
       // var temp_data_array = dict;
       var individual_array = temp_data_array[52].split(",");
       var individual_data = individual_array[1];
