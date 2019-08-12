@@ -2,9 +2,13 @@ import React from "react";
 import "./App.css";
 import ParentFetcher from "./components/rs3/Rs3ParentFetcher";
 import ParentFetcherOsrs from "./components/osrs/OsrsParentFetcher";
-import { BrowserRouter as Router, Route  } from 'react-router-dom';
+import Home from './components/home.js'
+import Nameform from './components/NameForm';
+import Rs3Home from './components/Rs3Home.js';
+import OsrsHome from './components/OsrsHome.js';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 export default function App() {
-
+  
   return (
     <React.Fragment>
     <Router>
@@ -14,17 +18,28 @@ export default function App() {
         href="https://bootswatch.com/4/darkly/bootstrap.min.css"
       />
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" />
+      
+      
+      <Route exact path="/rs3/:id" component={ParentFetcher} />
+      <Route exact path="/osrs/:id" component={ParentFetcherOsrs} />
+      
       <Route exact path="/" render={props => (
       <React.Fragment>
-      
-      <ParentFetcher />
+      <Home />
 
       </React.Fragment>
 )} />
-<Route path="/OSRS" render={props => (
+<Route exact path="/osrs" render={props => (
       <React.Fragment>
       
-      <ParentFetcherOsrs />
+      <OsrsHome />
+
+      </React.Fragment>
+)} />
+<Route exact path="/rs3" render={props => (
+      <React.Fragment>
+      
+      <Rs3Home />
 
       </React.Fragment>
 )} />
