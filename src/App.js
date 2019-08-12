@@ -3,9 +3,8 @@ import "./App.css";
 import ParentFetcher from "./components/rs3/Rs3ParentFetcher";
 import ParentFetcherOsrs from "./components/osrs/OsrsParentFetcher";
 import Home from './components/home.js'
-import Nameform from './components/NameForm';
-import Rs3Home from './components/Rs3Home.js';
-import OsrsHome from './components/OsrsHome.js';
+import Rs3Home from './components/rs3/Rs3Home.js';
+import OsrsHome from './components/osrs/OsrsHome.js';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 export default function App() {
   

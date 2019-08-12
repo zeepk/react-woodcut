@@ -160,18 +160,18 @@ export default class parent_fetcher extends Component {
       // dict = JSON.stringify(data);
       // var temp_data_array = dict.split("\n");
       // var temp_data_array = dict;
-      var individual_array = temp_data_array[52].split(",");
-      var individual_data = individual_array[1];
+      individual_skill_array = temp_data_array[52].split(",");
+      var individual_data = individual_skill_array[1];
       individual_data = parseInt(individual_data, 10);
       data[0] = individual_data;
-      individual_data = individual_array[0];
+      individual_data = individual_skill_array[0];
       data[1] = individual_data;
-      individual_array = temp_data_array[0].split(",");
-      var another_individual_data = individual_array[2];
+      individual_skill_array = temp_data_array[0].split(",");
+      var another_individual_data = individual_skill_array[2];
       another_individual_data = parseInt(another_individual_data, 10);
       another_individual_data = another_individual_data.toLocaleString();
       data[2] = another_individual_data;
-      individual_data = individual_array[0];
+      individual_data = individual_skill_array[0];
       data[3] = individual_data;
     }
     function remove_negatives(neg) {
@@ -254,10 +254,9 @@ export default class parent_fetcher extends Component {
 
     function organize_log_data(dict) {
       try {
-        var test = dict;
+        // var test = dict;
       } catch (error) {
         console.log("error log")
-        var empty_activities = {};
         // empty_activities[0] = "Player's RuneMetrics profile is set to private. No activity will be displayed.";
         // for (var i = 1; i < 20; i++) {
         //   empty_activities[i] = " ";

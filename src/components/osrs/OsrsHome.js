@@ -1,20 +1,20 @@
 import React, { Component } from "react";
 import Jumbotron from "react-bootstrap/Jumbotron";
-import Nameform from './NameForm';
+import Nameform from '../NameForm';
 
-class Rs3Home extends Component {
+class OsrsHome extends Component {
   render() {
     return (
       <div>
-              <Nameform version='rs3'/>
+              <Nameform version='osrs'/>
 
         <Jumbotron>
-          <h1>runescape 3</h1>
+          <h1>Osrs</h1>
           <p>
             use the search bar in the top right
           </p>
           <p>
-              more info coming here soon...
+              dashboard info coming soon...
               
           </p>
 
@@ -25,4 +25,4 @@ class Rs3Home extends Component {
   }
 }
 
-export default Rs3Home;
+export default OsrsHome;

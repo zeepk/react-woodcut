@@ -35,7 +35,7 @@ function Fetch_stats (props) {
           </thead>
           <tbody>
             <tr>
-              <td>{new_array[0].name}</td>
+              <td><img src={require("../skillsIcon.png")} alt="Stats Symbol" />{new_array[0].name}</td>
               <td>{new_array[0].level}</td>
               <td>{new_array[0].xp}</td>
               <td>{new_array[0].rank}</td>
