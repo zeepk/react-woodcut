@@ -11,7 +11,9 @@
 .nav-item {
   padding: 10px;
 }
-
+.stat_icon {
+  max-width: 20px;
+}
 .grid-container {
   display: grid;
   /* width: 100vw; */
