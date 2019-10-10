@@ -13,6 +13,7 @@ function Fetch_stats (props) {
       name: " ",
       level: " ",
       xp: " ",
+      virtual: " ",
       rank: " "
     }
     for(var i=0; i<28; i++){

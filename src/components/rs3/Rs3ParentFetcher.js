@@ -181,6 +181,84 @@ export default class parent_fetcher extends Component {
       return neg;
     }
 
+    function inRange(x, min, max) {
+      return ((x-min)*(x-max) <= 0);
+    }
+
+    function calculate_virtual_level(level, xp, is_elite) {
+      if(xp < 14391160){
+        return level;
+      }
+      else if (xp >= 104273167){
+        return 120;
+      }
+      else if (xp >= 94442737){
+        return 119;
+      }
+      else if (xp >= 85539082){
+        return 118;
+      } 
+      else if (xp >= 77474828){
+        return 117;
+      } 
+      else if (xp >= 70170840){
+        return 116;
+      } 
+      else if (xp >= 94442737){
+        return 115;
+      } 
+      else if (xp >= 94442737){
+        return 114;
+      } 
+      else if (xp >= 94442737){
+        return 113;
+      } 
+      else if (xp >= 94442737){
+        return 112;
+      } 
+      else if (xp >= 94442737){
+        return 111;
+      } 
+      else if (xp >= 94442737){
+        return 110;
+      } 
+      else if (xp >= 94442737){
+        return 109;
+      } 
+      else if (xp >= 94442737){
+        return 108;
+      } 
+      else if (xp >= 94442737){
+        return 107;
+      } 
+      else if (xp >= 94442737){
+        return 106;
+      } 
+      else if (xp >= 94442737){
+        return 105;
+      } 
+      else if (xp >= 94442737){
+        return 104;
+      } 
+      else if (xp >= 94442737){
+        return 103;
+      } 
+      else if (xp >= 94442737){
+        return 102;
+      } 
+      else if (xp >= 94442737){
+        return 101;
+      } 
+      else if (xp >= 94442737){
+        return 100;
+      }  
+      else {
+        console.log("Error calculating virtual level.");
+        return 0;
+      }
+
+    };
+
     function organize_data(dict, data_array) {
       try {
         var temp_data_array = dict.split("\n");
@@ -208,6 +286,8 @@ export default class parent_fetcher extends Component {
           name: data_array[i][1],
           rank: individual_skill_array[0],
           level: individual_skill_array[1],
+          //TODO: add virtual leveling for normal and elite skills
+          virtual: calculate_virtual_level(individual_skill_array[1], xp, false),
           xp: xp.toLocaleString("en")
         };
       }
