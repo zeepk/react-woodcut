@@ -5,6 +5,7 @@ function Fetch_stats (props) {
   // var new_array = useState({});
 
   var new_array = {};
+  var icon_string = "../../woodcut_stat_icons/1_overall.png"
   if(props.stats_array[1]){
     new_array = props.stats_array;
   }
@@ -42,7 +43,7 @@ function Fetch_stats (props) {
               <td>{new_array[0].rank}</td>
             </tr>
             <tr>
-              <td><img className="stat_icon" src={require("../../woodcut_stat_icons/2_attack.png")} alt="Stats Symbol" />{new_array[1].name}</td>
+              <td><img className="stat_icon" src={require(icon_string)} alt="Stats Symbol" />{new_array[1].name}</td>
               <td>{new_array[1].level}</td>
               <td>{new_array[1].xp}</td>
               <td>{new_array[1].rank}</td>
