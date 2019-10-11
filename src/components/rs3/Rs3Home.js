@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Jumbotron from "react-bootstrap/Jumbotron";
 import Nameform from '../NameForm';
+import Icon from '../../ios_share_icon.jpg'
 
 class Rs3Home extends Component {
   render() {
@@ -11,10 +12,10 @@ class Rs3Home extends Component {
         <Jumbotron>
           <h1>runescape 3</h1>
           <p>
-            use the search bar in the top right
+            Bookmark this page (or your profile page) and use the search bar in the top right
           </p>
           <p>
-              more info coming here soon...
+              Using an iPhone and want the app? Hit the <img src={Icon} width="30" alt="share button"></img> icon below, scroll down, and select Add to Home Screen
               
           </p>
 

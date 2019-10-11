@@ -140,7 +140,7 @@ export default class parent_fetcher extends Component {
       [57, "Master Clues"]
     ];
 
-    var skills = {};
+    var skills = [];
     var minigames = {};
     var activities = {};
     var dates = {};
@@ -181,12 +181,8 @@ export default class parent_fetcher extends Component {
       return neg;
     }
 
-    function inRange(x, min, max) {
-      return ((x-min)*(x-max) <= 0);
-    }
-
-    function calculate_virtual_level(level, xp, is_elite) {
-      if(xp < 14391160){
+    function calculate_virtual_level(name, level, xp) {
+      if(xp < 14391160 || name === "Overall"){
         return level;
       }
       else if (xp >= 104273167){
@@ -204,52 +200,52 @@ export default class parent_fetcher extends Component {
       else if (xp >= 70170840){
         return 116;
       } 
-      else if (xp >= 94442737){
+      else if (xp >= 63555443){
         return 115;
       } 
-      else if (xp >= 94442737){
+      else if (xp >= 57563718){
         return 114;
       } 
-      else if (xp >= 94442737){
+      else if (xp >= 52136869){
         return 113;
       } 
-      else if (xp >= 94442737){
+      else if (xp >= 47221641){
         return 112;
       } 
-      else if (xp >= 94442737){
+      else if (xp >= 42769801){
         return 111;
       } 
-      else if (xp >= 94442737){
+      else if (xp >= 38737661){
         return 110;
       } 
-      else if (xp >= 94442737){
+      else if (xp >= 35085654){
         return 109;
       } 
-      else if (xp >= 94442737){
+      else if (xp >= 31777943){
         return 108;
       } 
-      else if (xp >= 94442737){
+      else if (xp >= 28782069){
         return 107;
       } 
-      else if (xp >= 94442737){
+      else if (xp >= 26068632){
         return 106;
       } 
-      else if (xp >= 94442737){
+      else if (xp >= 23611006){
         return 105;
       } 
-      else if (xp >= 94442737){
+      else if (xp >= 21385073){
         return 104;
       } 
-      else if (xp >= 94442737){
+      else if (xp >= 19368992){
         return 103;
       } 
-      else if (xp >= 94442737){
+      else if (xp >= 17542976){
         return 102;
       } 
-      else if (xp >= 94442737){
+      else if (xp >= 15889109){
         return 101;
       } 
-      else if (xp >= 94442737){
+      else if (xp >= 14391160){
         return 100;
       }  
       else {
@@ -287,7 +283,7 @@ export default class parent_fetcher extends Component {
           rank: individual_skill_array[0],
           level: individual_skill_array[1],
           //TODO: add virtual leveling for normal and elite skills
-          virtual: calculate_virtual_level(individual_skill_array[1], xp, false),
+          virtual: calculate_virtual_level(data_array[i][1], individual_skill_array[1], xp),
           xp: xp.toLocaleString("en")
         };
       }
