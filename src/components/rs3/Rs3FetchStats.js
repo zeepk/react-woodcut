@@ -69,7 +69,7 @@ function Fetch_stats (props) {
 
             {new_array.map((skill, index) => {  
               return(
-              <tr>
+              <tr key={index}>
               <td><img className="stat_icon" src={img_array[index]} alt="Stats Symbol" />{skill.name}</td>
               <td>{skill.virtual}</td>
               <td>{skill.xp}</td>

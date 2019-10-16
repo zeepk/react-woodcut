@@ -95,10 +95,10 @@ export default class parent_fetcher_osrs extends Component {
       [32, "LMS Rank"]
     ];
 
-    var skills = {};
-    var minigames = {};
+    var skills = [];
+    var minigames = [];
 
-    var data = {};
+    var data = [];
     function remove_negatives(neg) {
       if (neg < 0 || neg === "-1"){
         neg = 0;

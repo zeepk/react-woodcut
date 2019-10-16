@@ -141,10 +141,10 @@ export default class parent_fetcher extends Component {
     ];
 
     var skills = [];
-    var minigames = {};
-    var activities = {};
-    var dates = {};
-    var data = {};
+    var minigames = [];
+    var activities = [];
+    var dates = [];
+    var data = [];
 
     function ogranize_user_data(dict) {
       try {
