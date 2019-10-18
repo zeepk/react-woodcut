@@ -31,6 +31,16 @@ import Invention from '../../woodcut_stat_icons/28_invention.png'
 
 function Fetch_stats (props) {
 
+  var thead_style = {
+    position: "sticky",
+    color: "yellow",
+    top: 0
+  }
+  var table_style = {
+    margin: "0 auto",
+    position: "relative"
+  }
+
 
   var new_array = [];
   var img_array = [Overall, Attack, Defence, Strength, Constitution, Ranged, Prayer, Magic, 
@@ -56,13 +66,13 @@ function Fetch_stats (props) {
   return (
 
         <div>
-        <Table striped id="stat-table">
-          <thead className="table-primary">
+        <Table striped id="stat-table" style={table_style}>
+          <thead style={thead_style} className="table-primary">
             <tr>
-              <th scope="col">Stat</th>
-              <th scope="col">Level</th>
-              <th scope="col">XP</th>
-              <th scope="col">Rank</th>
+              <th style={thead_style} scope="col">Stat</th>
+              <th style={thead_style} scope="col">Level</th>
+              <th style={thead_style} scope="col">XP</th>
+              <th style={thead_style} scope="col">Rank</th>
             </tr>
           </thead>
           <tbody>
