@@ -9,9 +9,7 @@ class home extends Component {
       <Nameform version='home'/>
         <Jumbotron>
           <h1>hello friend, select a game version above</h1>
-          <p>
-            welcome to woodcut
-          </p>
+
           <p>
               things are still kinda in the works here... but feel free to test things out!
               

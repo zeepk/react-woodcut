@@ -10,7 +10,7 @@
     "react-image": "^2.2.0",
     "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "3.0.1",
+    "react-scripts": "^3.3.0",
     "react-search-field": "^1.0.0"
   },
   "scripts": {
