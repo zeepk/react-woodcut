@@ -2,8 +2,8 @@ import React from "react";
 import Table from "react-bootstrap/Table";
 
 function Fetch_activity_log(props) {
-  var new_array = {}; 
-  var date_array = {};
+  var new_array = []; 
+  var date_array = [];
   
 
   if(props.activities[0]){
@@ -26,66 +26,14 @@ function Fetch_activity_log(props) {
               </tr>
             </thead>
             <tbody>
-              <tr title={date_array[0]}>
-                <td>{new_array[0]}</td>
+              {new_array.map((activity, index) => {  
+              return(
+                <tr key={index} title={date_array[index]}>
+                <td>{new_array[index]}</td>
               </tr>
-              <tr title={date_array[1]}>
-                <td>{new_array[1]}</td>
-              </tr>
-              <tr title={date_array[2]}>
-                <td>{new_array[2]}</td>
-              </tr>
-              <tr title={date_array[3]}>
-                <td>{new_array[3]}</td>
-              </tr>
-              <tr title={date_array[4]}>
-                <td>{new_array[4]}</td>
-              </tr>
-              <tr title={date_array[5]}>
-                <td>{new_array[5]}</td>
-              </tr>
-              <tr title={date_array[6]}>
-                <td>{new_array[6]}</td>
-              </tr>
-              <tr title={date_array[7]}>
-                <td>{new_array[7]}</td>
-              </tr>
-              <tr title={date_array[8]}>
-                <td>{new_array[8]}</td>
-              </tr>
-              <tr title={date_array[9]}>
-                <td>{new_array[9]}</td>
-              </tr>
-              <tr title={date_array[10]}>
-                <td>{new_array[10]}</td>
-              </tr>
-              <tr title={date_array[11]}>
-                <td>{new_array[11]}</td>
-              </tr>
-              <tr title={date_array[12]}>
-                <td>{new_array[12]}</td>
-              </tr>
-              <tr title={date_array[13]}>
-                <td>{new_array[13]}</td>
-              </tr>
-              <tr title={date_array[14]}>
-                <td>{new_array[14]}</td>
-              </tr>
-              <tr title={date_array[15]}>
-                <td>{new_array[15]}</td>
-              </tr>
-              <tr title={date_array[16]}>
-                <td>{new_array[16]}</td>
-              </tr>
-              <tr title={date_array[17]}>
-                <td>{new_array[17]}</td>
-              </tr>
-              <tr title={date_array[18]}>
-                <td>{new_array[18]}</td>
-              </tr>
-              <tr title={date_array[19]}>
-                <td>{new_array[19]}</td>
-              </tr>
+
+            )
+            })}
             </tbody>
           </Table>
         </div>

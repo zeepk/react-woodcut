@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 function Osrs_fetch_user_data(props) {
   var new_array = {};
   if(props.user_data[1]){

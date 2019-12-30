@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Jumbotron from "react-bootstrap/Jumbotron";
-import Nameform from './NameForm';
+import Nameform from '../NameForm';
+import Icon from '../../ios_share_icon.jpg'
 
 class OsrsHome extends Component {
   render() {
@@ -9,12 +10,12 @@ class OsrsHome extends Component {
               <Nameform version='osrs'/>
 
         <Jumbotron>
-          <h1>Osrs</h1>
+          <h1>old school runescape</h1>
           <p>
-            use the search bar in the top right
+          Bookmark this page (or your profile page) and use the search bar in the top right
           </p>
           <p>
-              dashboard info coming soon...
+          Using an iPhone and want the app? Hit the <img src={Icon} width="30" alt="share button"></img> icon below, scroll down, and select Add to Home Screen
               
           </p>
 

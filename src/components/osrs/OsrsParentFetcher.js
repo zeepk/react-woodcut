@@ -95,10 +95,10 @@ export default class parent_fetcher_osrs extends Component {
       [32, "LMS Rank"]
     ];
 
-    var skills = {};
-    var minigames = {};
+    var skills = [];
+    var minigames = [];
 
-    var data = {};
+    var data = [];
     function remove_negatives(neg) {
       if (neg < 0 || neg === "-1"){
         neg = 0;
@@ -192,51 +192,7 @@ export default class parent_fetcher_osrs extends Component {
     }
     
 
-    function organize_data(dict, data_array) {
-      try {
-        var temp_data_array = dict.split("\n");
-        var individual_skill_array = temp_data_array[5].split(",");
-      } catch (error) {
-        var empty_activities = {};
-        for (var i = 0; i < 28; i++) {
-          empty_activities[i] = " ";
-        }
-        return empty_activities;
-      }
-      temp_data_array = dict.split("\n");
 
-      for (i = 0; i < 28; i++) {
-        individual_skill_array = temp_data_array[i].split(",");
-        var xp = individual_skill_array[2];
-        xp = parseInt(xp, 10);
-        skills[i] = {
-          id: i,
-          name: data_array[i][1],
-          rank: individual_skill_array[0],
-          level: individual_skill_array[1],
-          xp: xp.toLocaleString("en")
-        };
-      }
-      for (i = 28; i < 58; i++) {
-        individual_skill_array = temp_data_array[i].split(",");
-        var score = individual_skill_array[1];
-        if (individual_skill_array[0] === "-1") {
-          individual_skill_array[0] = "Not Ranked";
-        }
-        if (score === "-1") {
-          score = " ";
-        } else {
-          score = parseInt(score, 10);
-          score = score.toLocaleString("en");
-        }
-        minigames[i] = {
-          id: i,
-          name: data_array[i][1],
-          rank: individual_skill_array[0],
-          score: score
-        };
-      }
-    }
 
     organize_stat_data(this.state.data, os_data_array);
     ogranize_user_data(this.state.data);
